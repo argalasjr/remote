@@ -1,0 +1,123 @@
+{
+  "name": "tbs-remote",
+  "version": "2.0.0-test",
+  "author": "TBS Biometrics",
+  "homepage": "http://tbs-biometrics.com/",
+  "scripts": {
+    "android-run-live": "ionic cordova run android -l",
+    "android-build": "ionic cordova build android --prod"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular-devkit/build-angular": "^0.13.0",
+    "@angular/common": "^7.2.15",
+    "@angular/core": "^7.2.15",
+    "@angular/forms": "^7.2.15",
+    "@angular/http": "^7.2.15",
+    "@angular/platform-browser": "^7.2.15",
+    "@angular/platform-browser-dynamic": "^7.2.15",
+    "@angular/router": "^7.2.15",
+    "@ionic-native/ble": "^5.5.1",
+    "@ionic-native/core": "^5.5.1",
+    "@ionic-native/file": "^5.5.1",
+    "@ionic-native/file-chooser": "^5.5.1",
+    "@ionic-native/file-path": "^5.5.1",
+    "@ionic-native/splash-screen": "^5.5.1",
+    "@ionic-native/status-bar": "^5.5.1",
+    "@ionic/angular": "^4.4.2",
+    "@ionic/storage": "^2.2.0",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
+    "aes-js": "^3.1.2",
+    "ajv": "^6.10.2",
+    "cordova-android": "^8.1.0",
+    "cordova-browser": "6.0.0",
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-ble-central": "^1.2.2",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-customurlscheme": "^4.4.0",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-filechooser": "1.2.0",
+    "cordova-plugin-filepath": "1.5.1",
+    "cordova-plugin-ionic-keyboard": "^2.1.3",
+    "cordova-plugin-ionic-webview": "^4.0.1",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-plugin-wifiwizard2": "3.1.0",
+    "cordova-sqlite-storage": "^3.0.0",
+    "core-js": "^2.5.4",
+    "es6-promise-plugin": "^4.1.0",
+    "rxjs": "^6.5.3",
+    "sjcl": "^1.0.8",
+    "text-encoding": "^0.7.0",
+    "url-parse": "^1.4.4",
+    "wifiwizard2": "^3.1.0",
+    "zone.js": "~0.8.29"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "~0.12.3",
+    "@angular-devkit/core": "~7.2.3",
+    "@angular-devkit/schematics": "~7.2.3",
+    "@angular/cli": "~7.3.9",
+    "@angular/compiler": "~7.2.15",
+    "@angular/compiler-cli": "~7.2.15",
+    "@angular/language-service": "~7.2.15",
+    "@ionic/angular-toolkit": "^1.5.1",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~10.12.0",
+    "@types/sjcl": "^1.0.28",
+    "@types/text-encoding": "0.0.35",
+    "@types/url-parse": "^1.4.3",
+    "codelyzer": "~4.5.0",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "^4.3.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "node-sass": "^4.12.0",
+    "protractor": "~5.4.0",
+    "ts-node": "~8.0.0",
+    "tslint": "~5.12.0",
+    "typescript": "~3.2.4"
+  },
+  "browser": {
+    "crypto": false
+  },
+  "description": "Unlock EVVA smart lock with your phone and control 2D mini device remotely",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-ble-central": {
+        "BLUETOOTH_USAGE_DESCRIPTION": " "
+      },
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-sqlite-storage": {},
+      "wifiwizard2": {},
+      "cordova-plugin-customurlscheme": {
+        "URL_SCHEME": "comtbsremote",
+        "ANDROID_SCHEME": " ",
+        "ANDROID_HOST": " ",
+        "ANDROID_PATHPREFIX": "/"
+      },
+      "cordova-plugin-filechooser": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-filepath": {}
+    },
+    "platforms": [
+      "android",
+      "ios",
+      "browser"
+    ]
+  }
+}

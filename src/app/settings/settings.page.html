@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'settings.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>{{'settings.language' | translate}}</ion-label>
+      <ion-select [value]="language" (ionChange)="languageChanged($event)" okText="{{'common.ok' | translate}}" cancelText="{{'common.cancel' | translate}}">
+        <ion-select-option [value]="null">{{'settings.system-default' | translate}}</ion-select-option>
+        <ion-select-option [value]="'en'">English</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'settings.show-evva' | translate}}</ion-label>
+      <ion-checkbox [checked]="showEvva" (ionChange)="evvaCheckedChange($event)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

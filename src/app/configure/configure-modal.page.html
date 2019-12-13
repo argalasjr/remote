@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="modalCtrl.dismiss(null)">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{'configure-modal.toolbar-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        {{'configure-modal.connect.title' | translate}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        {{'configure-modal.connect.help-text' | translate}}
+      </p>
+    </ion-card-content>
+    <ion-list lines="none">
+      <ion-item-group>
+        <ion-item>
+          <ion-label position="fixed">{{'configure-modal.connect.ip' | translate}}</ion-label>
+          <ion-input readonly [value]="connectionStatus.ip ? connectionStatus.ip : ('configure-modal.connect.not-connected' | translate)"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">{{'configure-modal.connect.wi-fi' | translate}}</ion-label>
+          <ion-input readonly [value]="connectionStatus.network ? connectionStatus.network : ('configure-modal.connect.not-connected' | translate)"></ion-input>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item button (click)="connectToWifi()">
+          <ion-icon name="wifi" slot="start"></ion-icon>
+          <ion-label>
+            <ion-text color="primary">{{'configure-modal.connect.connect-to-wi-fi' | translate}}</ion-text>
+          </ion-label>
+        </ion-item>
+        <ion-item button [disabled]="!connectionStatus.ip" (click)="modalCtrl.dismiss(connectionStatus.ip)">
+          <ion-icon name="arrow-forward" slot="start"></ion-icon>
+          <ion-label>
+            <ion-text color="primary">{{'configure-modal.connect.proceed' | translate}}</ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </ion-card>
+</ion-content>

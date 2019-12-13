@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{'configure.toolbar-title' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        {{'configure.help-card.title' | translate}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{'configure.help-card.text1' | translate}}</p>
+      <p>{{'configure.help-card.text2' | translate}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header><ion-card-title>{{'configure.detected-devices.detected-devices' | translate}}</ion-card-title></ion-card-header>
+    <ion-list lines="none">
+      <ion-item button *ngFor="let device of devices" (click)="connect(device)" detail>
+        <ion-thumbnail item-start>
+          <img [src]="'assets/imgs/devices/' + device.name + '.png'">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{device.name}}</h2>
+          <p>{{device.id}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngIf="!devices || devices.length === 0">
+        <ion-label>
+          <ion-note>{{'configure.detected-devices.no-device' | translate}}</ion-note>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="none">
+      <ion-item button (click)="startScan()">
+        <ion-icon slot="start" name="refresh"></ion-icon> {{'configure.detected-devices.refresh' | translate}}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

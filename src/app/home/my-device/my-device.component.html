@@ -1,0 +1,11 @@
+<ion-item >
+    <ion-thumbnail item-start>
+  <img [src]="'assets/imgs/devices/' + data.key + '.png'" implicit_width="40" height="40" (click)="remote_connect(' + data.ip + ')"/>
+  </ion-thumbnail>
+<p (click)="remote_connect(' + data.ip + ')" >
+  {{data.key}}
+</p>
+<ion-tab-button item-end>
+    <ion-icon name="settings" (click)="setRemoteIp()"></ion-icon>
+     </ion-tab-button>
+</ion-item>

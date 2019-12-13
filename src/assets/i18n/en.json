@@ -1,0 +1,103 @@
+{
+  "common" : {
+    "add" : "Add",
+    "cancel" : "Cancel",
+    "error" : "Error",
+    "no" : "No",
+    "ok" : "OK",
+    "success" : "Success",
+    "yes" : "Yes"
+  },
+  "configure" : {
+    "description" : "Initial configuration of 2D Mini",
+    "detected-devices" : {
+      "connecting" : "Connecting to {{deviceName}}",
+      "detected-devices" : "Detected devices",
+      "no-device" : "No nearby TBS device detected",
+      "refresh" : "Refresh",
+      "scanning" : "Scanning for nearby TBS devices"
+    },
+    "help-card" : {
+      "text1" : "Please select device from the list below. Make sure you have Bluetooth turned on and that you are close to the TBS device.",
+      "text2" : "If no device is detected, you can repeat discovery with \"Refresh\" button.",
+      "title" : "Connect to the device"
+    },
+    "navigate-button" : "Configure",
+    "toolbar-title" : "Connect"
+  },
+  "configure-modal" : {
+    "connect" : {
+      "connect-to-wi-fi" : "Connect to Wi-Fi",
+      "help-text" : "Please fill in credentials for your Wi-Fi network. When your device will be connected, you can continue by clicking on \"Proceed\" button.",
+      "ip" : "IP",
+      "missing-password" : "Please fill proper password",
+      "missing-ssid" : "Please fill SSID",
+      "not-connected" : "Not connected",
+      "password" : "Password",
+      "proceed" : "Proceed",
+      "ssid" : "SSID",
+      "title" : "Device network connection",
+      "wi-fi" : "Wi-Fi",
+      "wi-fi-credentials" : "Wi-Fi credentials",
+      "wi-fi-credentials-help-text" : "Please enter Wi-Fi credentials"
+    },
+    "toolbar-title" : "Connect device to the network"
+  },
+  "home" : {
+    "about" : "About this app",
+    "title" : "Welcome to TBS Remote",
+    "version" : "Version"
+  },
+  "keys" : {
+    "add-new-key" : "Add new key",
+    "available-keys" : "Available keys",
+    "delete-key-question" : "Do you really want to delete selected key?",
+    "enter-key" : "Enter key manually",
+    "enter-key-and-content" : "Please enter key name and content",
+    "import-key" : "Import from file",
+    "key-content" : "Key content",
+    "key-delete" : "Delete",
+    "key-name" : "Name",
+    "no-key" : "No key added",
+    "toolbar-title" : "Keys management"
+  },
+  "locks" : {
+    "battery-percent" : "Battery is on {{batteryLevel}}%",
+    "connecting-to" : "Connecting to {{deviceName}}...",
+    "description" : "Emergency open of EVVA smart lock",
+    "manage-keys" : "Manage keys",
+    "navigate-button" : "Go to emergency unlock",
+    "no-keys" : "You do not have any keys. Please add them",
+    "repeat-scan" : "Repeat scan",
+    "scan-for-locks" : "Please scan for nearby EVVA locks by clicking on \"Start scan\"",
+    "scanning" : "Scanning for nearby locks...",
+    "select-key" : "Select key",
+    "select-lock" : "Select lock you wish to open",
+    "start-scan" : "Start scan",
+    "toolbar-title" : "Emergency unlock"
+  },
+  "remote" : {
+    "connecting" : "Connecting...",
+    "connection-error" : "Connection error",
+    "connection-retry" : "Retry",
+    "description" : "Control 2D Mini device with your phone",
+    "detected-devices" : "Detected devices",
+    "device-has-no-ip" : "Device is not connected to any network",
+    "enter-device-ip" : "Please enter Device IP address",
+    "ip" : "IP",
+    "navigate-button" : "Go to remote screen",
+    "obtaining-device-info" : "Obtaining device information",
+    "please-enter" : "Please enter {{inputName}}",
+    "search-for-devices" : "Search for devices",
+    "searching-for-devices" : "Searching for nearby TBS devices",
+    "select-device" : "Please select device from the list",
+    "set-ip" : "Set remote device IP",
+    "toolbar-title" : "Remote screen"
+  },
+  "settings" : {
+    "language" : "Language",
+    "show-evva" : "Show EVVA emergency unlock",
+    "system-default" : "System",
+    "title" : "Settings"
+  }
+}

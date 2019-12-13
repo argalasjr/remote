@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{'locks.toolbar-title' | translate}}
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="showMenu($event)">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- No keys -->
+  <ion-card *ngIf="keys.length == 0">
+    <img class="hide-sm" src="assets/imgs/keys.jpg" (click)="manageKeys()" />
+    <ion-card-content>
+      <p>{{'locks.no-keys' | translate}}</p>
+      <ion-button fill="clear" size="small" (click)="manageKeys()">
+        {{'locks.manage-keys' | translate}}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Some key(s) stored -->
+  <ng-container *ngIf="keys.length > 0">
+
+    <ng-container [ngSwitch]="devices.length === 0">
+      <!-- No device found -->
+      <ion-card *ngSwitchCase="true">
+        <img class="hide-sm" src="assets/imgs/unlock.jpg" (click)="startScan()" />
+        <ion-card-content>
+          <p>{{'locks.scan-for-locks' | translate}}</p>
+        </ion-card-content>
+        <ion-list lines="none">
+          <ion-item button fill="clear" size="small" (click)="startScan()">
+            <ion-icon name="search" slot="start"></ion-icon>
+            {{'locks.start-scan' | translate}}
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+      <!-- Some device(s) found -->
+      <ion-card *ngSwitchCase="false">
+        <img class="hide-sm" src="assets/imgs/unlock.jpg" />
+        <ion-card-content>
+          <p>{{'locks.select-lock' | translate}}</p>
+          <ion-list lines="none">
+            <ion-item button detail (click)="select(device)" *ngFor="let device of devices">
+              <ion-label>
+                <h2 class="device-name">{{device.name}}</h2>
+                <p>{{device.id}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item button fill="clear" size="small" (click)="startScan()">
+              <ion-icon slot="start" name="refresh"></ion-icon>
+              {{'locks.repeat-scan' | translate}}
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+</ion-content>

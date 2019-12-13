@@ -1,0 +1,103 @@
+{
+  "common" : {
+    "add" : "common.add",
+    "cancel" : "common.cancel",
+    "error" : "common.error",
+    "no" : "common.no",
+    "ok" : "common.ok",
+    "success" : "common.success",
+    "yes" : "common.yes"
+  },
+  "configure" : {
+    "description" : "configure.description",
+    "detected-devices" : {
+      "connecting" : "configure.detected-devices.connecting",
+      "detected-devices" : "configure.detected-devices.detected-devices",
+      "no-device" : "configure.detected-devices.no-device",
+      "refresh" : "configure.detected-devices.refresh",
+      "scanning" : "configure.detected-devices.scanning"
+    },
+    "help-card" : {
+      "text1" : "configure.help-card.text1",
+      "text2" : "configure.help-card.text2",
+      "title" : "configure.help-card.title"
+    },
+    "navigate-button" : "configure.navigate-button",
+    "toolbar-title" : "configure.toolbar-title"
+  },
+  "configure-modal" : {
+    "connect" : {
+      "connect-to-wi-fi" : "configure-modal.connect.connect-to-wi-fi",
+      "help-text" : "configure-modal.connect.help-text",
+      "ip" : "configure-modal.connect.ip",
+      "missing-password" : "configure-modal.connect.missing-password",
+      "missing-ssid" : "configure-modal.connect.missing-ssid",
+      "not-connected" : "configure-modal.connect.not-connected",
+      "password" : "configure-modal.connect.password",
+      "proceed" : "configure-modal.connect.proceed",
+      "ssid" : "configure-modal.connect.ssid",
+      "title" : "configure-modal.connect.title",
+      "wi-fi" : "configure-modal.connect.wi-fi",
+      "wi-fi-credentials" : "configure-modal.connect.wi-fi-credentials",
+      "wi-fi-credentials-help-text" : "configure-modal.connect.wi-fi-credentials-help-text"
+    },
+    "toolbar-title" : "configure-modal.toolbar-title"
+  },
+  "home" : {
+    "about" : "home.about",
+    "title" : "home.title",
+    "version" : "home.version"
+  },
+  "keys" : {
+    "add-new-key" : "keys.add-new-key",
+    "available-keys" : "keys.available-keys",
+    "delete-key-question" : "keys.delete-key-question",
+    "enter-key" : "keys.enter-key",
+    "enter-key-and-content" : "keys.enter-key-and-content",
+    "import-key" : "keys.import-key",
+    "key-content" : "keys.key-content",
+    "key-delete" : "keys.key-delete",
+    "key-name" : "keys.key-name",
+    "no-key" : "keys.no-key",
+    "toolbar-title" : "keys.toolbar-title"
+  },
+  "locks" : {
+    "battery-percent" : "locks.battery-percent",
+    "connecting-to" : "locks.connecting-to",
+    "description" : "locks.description",
+    "manage-keys" : "locks.manage-keys",
+    "navigate-button" : "locks.navigate-button",
+    "no-keys" : "locks.no-keys",
+    "repeat-scan" : "locks.repeat-scan",
+    "scan-for-locks" : "locks.scan-for-locks",
+    "scanning" : "locks.scanning",
+    "select-key" : "locks.select-key",
+    "select-lock" : "locks.select-lock",
+    "start-scan" : "locks.start-scan",
+    "toolbar-title" : "locks.toolbar-title"
+  },
+  "remote" : {
+    "connecting" : "remote.connecting",
+    "connection-error" : "remote.connection-error",
+    "connection-retry" : "remote.connection-retry",
+    "description" : "remote.description",
+    "detected-devices" : "remote.detected-devices",
+    "device-has-no-ip" : "remote.device-has-no-ip",
+    "enter-device-ip" : "remote.enter-device-ip",
+    "ip" : "remote.ip",
+    "navigate-button" : "remote.navigate-button",
+    "obtaining-device-info" : "remote.obtaining-device-info",
+    "please-enter" : "remote.please-enter",
+    "search-for-devices" : "remote.search-for-devices",
+    "searching-for-devices" : "remote.searching-for-devices",
+    "select-device" : "remote.select-device",
+    "set-ip" : "remote.set-ip",
+    "toolbar-title" : "remote.toolbar-title"
+  },
+  "settings" : {
+    "language" : "settings.language",
+    "show-evva" : "settings.show-evva",
+    "system-default" : "settings.system-default",
+    "title" : "settings.title"
+  }
+}

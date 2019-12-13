@@ -1,0 +1,25 @@
+.remote-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #444;
+    align-items: center;
+}
+
+.remote-landscape {
+    height: 100%;
+    width: auto;
+}
+
+.remote-portrait {
+    width: 100%;
+    height: auto;
+}
+
+.connecting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
