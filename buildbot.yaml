@@ -1,17 +1,17 @@
 mobile-remote:
   - name: npmInstall
-    command: [ ./deploy.sh, npmInstall ]
+    command: [ ./deploy.py, npmInstall ]
   - name: ionicAddAndroid
-    command: [ ./deploy.sh, ionicAddAndroid ]
+    command: [ ./deploy.py, ionicAddAndroid ]
   - name: ionicBuildAndroid
-    command: [ ./deploy.sh, ionicBuildAndroid ]
+    command: [ ./deploy.py, ionicBuildAndroid ]
   - name: deploy
-    command: [ ./deploy.sh, deploy ]
+    command: [ ./deploy.py, deploy ]
   - name: prepareMessage
-    command: [ ./deploy.sh, prepareMessage ]
+    command: [ ./deploy.py, prepareMessage ]
   - name: notify
     messageFile: chat-message.txt
     step type: tbs.PostFlockMessage
-    token: 08c9a478-6ba3-46f9-bdb8-16883d63dc7d
+    channelName: TBS Remote mobile app
   - name: cleanUp
-    command: [ ./deploy.sh, cleanUp ]
+    command: [ ./deploy.py, cleanUp ]

@@ -5,24 +5,33 @@
     "error" : "Error",
     "no" : "No",
     "ok" : "OK",
+    "proceed" : "Proceed",
     "success" : "Success",
     "yes" : "Yes"
   },
   "configure" : {
-    "description" : "Initial configuration of 2D Mini",
+    "description" : "Initial configuration of 2D MINI",
     "detected-devices" : {
       "connecting" : "Connecting to {{deviceName}}",
       "detected-devices" : "Detected devices",
       "no-device" : "No nearby TBS device detected",
       "refresh" : "Refresh",
-      "scanning" : "Scanning for nearby TBS devices"
+      "scanning" : "Scanning for nearby TBS devices..."
     },
+    "disconnected" : "Bluetooth is disabled",
+    "fetch" : "Fetching device information",
     "help-card" : {
       "text1" : "Please select device from the list below. Make sure you have Bluetooth turned on and that you are close to the TBS device.",
       "text2" : "If no device is detected, you can repeat discovery with \"Refresh\" button.",
       "title" : "Connect to the device"
     },
     "navigate-button" : "Configure",
+    "network-header" : "Network Settings",
+    "network-unreachable" : "Device network is unreachable. Do you want to establish new connection ?",
+    "proceed-header" : "SUCCESS",
+    "proceed-text" : "Device successfully connected to your network. Please give it a useful name now.",
+    "set-network" : "Connecting to network",
+    "testing" : "Device is already connected to a network. Testing connectivity.",
     "toolbar-title" : "Connect"
   },
   "configure-modal" : {
@@ -45,21 +54,33 @@
   },
   "home" : {
     "about" : "About this app",
-    "title" : "Welcome to TBS Remote",
+    "bluetooth" : "Bluetooth",
+    "my-devices" : "My Devices",
+    "network" : "Network",
+    "new-connection" : "Add new device",
+    "new-connection-header" : "New Connection",
+    "new-connection-text" : "Please choose type of connection you want to establish.",
+    "new-connection-text-ble" : "If IP address of your device is not known please use this option.",
+    "new-connection-text-ble-note" : "NOTE: Bluetooth on device is only active in startup wizard or Admin mode!",
+    "new-connection-text-network" : "If IP address of your device is known please choose this option. It connects directly to remote screen.",
+    "remote-connection" : "Remote connection",
+    "title" : "My Devices",
     "version" : "Version"
   },
   "keys" : {
     "add-new-key" : "Add new key",
     "available-keys" : "Available keys",
-    "delete-key-question" : "Do you really want to delete selected key?",
-    "enter-key" : "Enter key manually",
+    "delete-key-question" : "Do you really want to delete key?",
+    "empty-key-header" : "Empty key list",
+    "empty-list-text" : "You do not have an unlock key defined. Please add.                                                                                                           8:13 PM",
+    "enter-key" : "Add key manually",
     "enter-key-and-content" : "Please enter key name and content",
-    "import-key" : "Import from file",
+    "import-key" : "Import key from file",
     "key-content" : "Key content",
     "key-delete" : "Delete",
     "key-name" : "Name",
     "no-key" : "No key added",
-    "toolbar-title" : "Keys management"
+    "title" : "My Keys"
   },
   "locks" : {
     "battery-percent" : "Battery is on {{batteryLevel}}%",
@@ -69,21 +90,37 @@
     "navigate-button" : "Go to emergency unlock",
     "no-keys" : "You do not have any keys. Please add them",
     "repeat-scan" : "Repeat scan",
-    "scan-for-locks" : "Please scan for nearby EVVA locks by clicking on \"Start scan\"",
+    "scan-for-locks" : "Scan for nearby EVVA locks by clicking on 'Start scan'",
     "scanning" : "Scanning for nearby locks...",
     "select-key" : "Select key",
     "select-lock" : "Select lock you wish to open",
     "start-scan" : "Start scan",
-    "toolbar-title" : "Emergency unlock"
+    "title" : "My Locks"
+  },
+  "my-device" : {
+    "client-name-header" : "Change Name",
+    "client-name-placeholder" : "device name",
+    "client-name-text" : "Do you want to change your device name ?",
+    "client-name-text-set" : "Please set a name for your device",
+    "delete-header" : "Remove Device",
+    "delete-text" : "Do you want to continue ?",
+    "label-ip" : "Change device ip",
+    "label-name" : "Change device name",
+    "save-header" : "Save connection",
+    "save-text" : "Do you want to save this connection ?",
+    "settings-header" : "Settings",
+    "settings-text1" : "Please choose option for device: ",
+    "settings-text2" : " with IP address: "
   },
   "remote" : {
     "connecting" : "Connecting...",
     "connection-error" : "Connection error",
     "connection-retry" : "Retry",
-    "description" : "Control 2D Mini device with your phone",
+    "description" : "Control 2D MINI device with your phone",
     "detected-devices" : "Detected devices",
     "device-has-no-ip" : "Device is not connected to any network",
     "enter-device-ip" : "Please enter Device IP address",
+    "error" : "Device not reachable",
     "ip" : "IP",
     "navigate-button" : "Go to remote screen",
     "obtaining-device-info" : "Obtaining device information",
@@ -96,7 +133,7 @@
   },
   "settings" : {
     "language" : "Language",
-    "show-evva" : "Show EVVA emergency unlock",
+    "show-evva" : "Show EVVA smartlock menu",
     "system-default" : "System",
     "title" : "Settings"
   }

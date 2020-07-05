@@ -1,5 +1,4 @@
 <ion-card style="margin: 0px">
-  <ion-card-header><ion-card-title>{{'configure.detected-devices.detected-devices' | translate}}</ion-card-title></ion-card-header>
   <img src="assets/imgs/gears.jpg" />
   <ion-list lines="none">
     <ion-item button *ngFor="let device of devices" (click)="connect(device)" detail>
@@ -19,7 +18,7 @@
   </ion-list>
   <ion-list lines="none">
     <ion-item button (click)="startScan()">
-      <ion-icon slot="start" name="refresh"></ion-icon> {{'configure.detected-devices.refresh' | translate}}
+      <ion-icon slot="start" name="refresh"></ion-icon> <p>{{'configure.detected-devices.refresh' | translate}}</p>
     </ion-item>
   </ion-list>
 </ion-card>

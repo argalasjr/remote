@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -15,6 +14,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuPopover } from './menu';
+import { HTTP } from '@ionic-native/http/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Chooser } from '@ionic-native/chooser/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -35,15 +39,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     BLE,
-    FileChooser,
     FilePath,
     File,
+    HTTP,
+    NativeStorage,
+    Chooser,
+    ScreenOrientation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@ import { concatMap, debounceTime, map, tap } from 'rxjs/operators';
 import { ErrorDialogService } from '../../../services/error-dialog/error-dialog.service';
 import { PeripheralDataExtended } from '../../../interfaces/ble';
 import { BluetoothNetworkClientService } from '../../../services/bluetooth-network-client/bluetooth-network-client.service';
-
+import { LoadingService } from '../../../services/loading/loading.service';
 /**
  * Modal dialog for device network configuration
  */
@@ -16,8 +16,9 @@ import { BluetoothNetworkClientService } from '../../../services/bluetooth-netwo
   styleUrls: ['./configure-modal.component.scss'],
 })
 export class ConfigureModalComponent implements OnInit {
-
   @Input() connectedDevice: PeripheralDataExtended = null;
+  @Input() changeIp: boolean = null;
+
 
   connectionStatus = {
     ip: null,
@@ -32,25 +33,93 @@ export class ConfigureModalComponent implements OnInit {
   private textEncoder = new TextEncoder();
   private textDecoder = new TextDecoder();
   private subscriptions: Subscription[] = [];
+  private aboutToConnect = false;
+  private connecting = false;
+  private connectionRequestCount = 0;
+  private responseCount = 0;
+  private timeoutNetwork = null;
 
   constructor(
-    public modalCtrl: ModalController, private alertCtrl: AlertController, private tr: TranslateService,
-    private bleService: BluetoothNetworkClientService, private platform: Platform, private cd: ChangeDetectorRef,
-    private helpers: ErrorDialogService
-  ) { }
+    public modalCtrl: ModalController,
+    private alertCtrl: AlertController,
+    private tr: TranslateService,
+    private bleService: BluetoothNetworkClientService,
+    private platform: Platform,
+    private cd: ChangeDetectorRef,
+    private helpers: ErrorDialogService,
+    private loadingService: LoadingService,
+  ) {
+  }
 
   async ngOnInit() {
-    console.log('ConfigureModalPage::ngOnInit', this.connectedDevice);
+    console.log('ConfigureModalPage::ngOnInit', this.connectedDevice, this.changeIp);
     await this.platform.ready();
     if (window['WifiWizard2']) {
       try {
         this.wifiCredentials.ssid = await window['WifiWizard2'].getConnectedSSID();
       } catch (error) {
-        this.helpers.showError(error);
+       // this.helpers.showError(error);
         console.log('getConnectedSSID failed:', error);
       }
     }
+    this.getDeviceNetworkConfig();
+  }
 
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave ConfigureModalPage');
+    this.loadingService.hide();
+    if ( this.timeoutNetwork != null ) {
+      this.connectionRequestCount = 0;
+      this.responseCount = 0;
+      this.timeoutNetwork.unref();
+    }
+  }
+  connectToWifi() {
+  if (!this.aboutToConnect) {
+    this.aboutToConnect = true;
+    this.alertCtrl.create({
+      backdropDismiss: false,
+      header: this.tr.instant('configure-modal.connect.wi-fi-credentials'),
+      message: this.tr.instant('configure-modal.connect.wi-fi-credentials-help-text'),
+      inputs: [{
+        type: 'text',
+        value: this.wifiCredentials.ssid,
+        placeholder: this.tr.instant('configure-modal.connect.ssid'),
+        name: 'ssid'
+      }, {
+        type: 'password',
+        value: this.wifiCredentials.passphrase,
+        placeholder: this.tr.instant('configure-modal.connect.password'),
+        name: 'passphrase'
+      }],
+      buttons: [
+        {
+          text: this.tr.instant('common.cancel'),
+          handler: () => {
+            this.modalCtrl.dismiss();
+          }
+        },
+        {
+          text: this.tr.instant('common.ok'),
+          handler: value => {
+            const ssid = value.ssid ? value.ssid.trim() as string : '';
+            const passphrase = value.passphrase as string | '';
+            if (!ssid) {
+              this.showMessageBox(this.tr.instant('configure-modal.connect.missing-ssid'));
+              return false;
+            } else if (passphrase.length < 8) {
+              this.showMessageBox(this.tr.instant('configure-modal.connect.missing-password'));
+              return false;
+            } else {
+            this.setNetwork(ssid, passphrase);
+            }
+          }
+        }
+      ]
+    }).then(alrt => alrt.present());
+  }
+  }
+  private async getDeviceNetworkConfig() {
     const ip$ = this.bleService.readAndObserve(
       this.connectedDevice.id,
       this.bleService.networkServiceUuid,
@@ -79,83 +148,65 @@ export class ConfigureModalComponent implements OnInit {
       debounceTime(200),
     ).subscribe(status => {
       console.log('received', status);
-      this.connectionStatus = status;
-      this.cd.detectChanges();
+      if (status.ip) {
+        this.connecting = false;
+        this.connectionStatus = status;
+        this.cd.detectChanges();
+      }
+      if (!this.connecting) {
+      if (this.connectionStatus.ip && !this.changeIp ) {
+        this.loadingService.hide();
+        this.modalCtrl.dismiss(this.connectedDevice, this.connectionStatus.ip);
+      } else {
+        this.connectToWifi();
+      }
+      } else { // connecting
+          this.connectionRequestCount += 1;
+          if (this.connectionRequestCount > 1) {
+          this.connecting = false;
+          this.loadingService.hide();
+          this.modalCtrl.dismiss(null, null);
+        }
+      }
     }, error => {
       this.helpers.showError(error);
     });
     this.subscriptions.push(subscription);
-
-    this.connectToWifi()
   }
-
-  ionViewWillLeave() {
-    console.log('ionViewWillLeave ConfigureModalPage');
-    this.subscriptions.forEach(s => s.unsubscribe());
-    this.disconnect();
-  }
-
-  connectToWifi() {
-    this.alertCtrl.create({
-      header: this.tr.instant('configure-modal.connect.wi-fi-credentials'),
-      message: this.tr.instant('configure-modal.connect.wi-fi-credentials-help-text'),
-      inputs: [{
-        type: 'text',
-        value: this.wifiCredentials.ssid,
-        placeholder: this.tr.instant('configure-modal.connect.ssid'),
-        name: 'ssid'
-      }, {
-        type: 'text',
-        value: this.wifiCredentials.passphrase,
-        placeholder: this.tr.instant('configure-modal.connect.password'),
-        name: 'passphrase'
-      }],
-      buttons: [
-        this.tr.instant('common.cancel'),
-        {
-          text: this.tr.instant('common.ok'),
-          handler: value => {
-            const ssid = value.ssid ? value.ssid.trim() as string : '';
-            const passphrase = value.passphrase as string | '';
-            if (!ssid) {
-              this.showMessageBox(this.tr.instant('configure-modal.connect.missing-ssid'));
-              return false;
-            }
-            if (passphrase.length < 8) {
-              this.showMessageBox(this.tr.instant('configure-modal.connect.missing-password'));
-              return false;
-            }
-            this.setNetwork(ssid, passphrase);
-          }
-        }
-      ]
-    }).then(alrt => alrt.present());
-  }
-
   private showMessageBox(message: string) {
-    this.alertCtrl.create({ message, buttons: [this.tr.instant('common.ok')] }).then(alrt => alrt.present());
+    this.alertCtrl.create({ backdropDismiss: false, message, buttons: [this.tr.instant('common.ok')] }).then(alrt => alrt.present());
   }
 
-  private disconnect() {
-    this.bleService.disconnect(this.connectedDevice.id).subscribe(() => { }, error => console.log(error));
-  }
-
-  private encode(string: string): ArrayBuffer {
-    return this.textEncoder.encode(string).buffer as ArrayBuffer;
+  private encode(toEncode: string): ArrayBuffer {
+    return this.textEncoder.encode(toEncode).buffer as ArrayBuffer;
   }
 
   private setNetwork(ssid: string, passphrase: string) {
+    this.connecting = true;
+    this.loadingService.show({
+      message: this.tr.instant('configure.set-network')
+    });
     const writeSsid = this.bleService.write(
       this.connectedDevice.id, this.bleService.networkServiceUuid, this.bleService.ssidCharacteristicsUuid, this.encode(ssid)
     );
     const writePassphrase = this.bleService.write(
       this.connectedDevice.id, this.bleService.networkServiceUuid, this.bleService.passCharacteristicsUuid, this.encode(passphrase)
     );
-    writeSsid.pipe(concatMap(() => writePassphrase)).subscribe(() => {
-      console.log('write success');
-    }, error => {
+
+    writeSsid.pipe(concatMap(() => writePassphrase),
+    tap(console.log),
+    debounceTime(200)).subscribe((status) => {
+      this.responseCount += 1;
+      if (this.responseCount < 1) {
+        console.log(status);
+        this.timeoutNetwork = setTimeout(() => {
+                this.loadingService.hide();
+                this.modalCtrl.dismiss(null, null);
+            }, 15000);
+        }
+    }
+    , error => {
       console.log('write error:', error);
-      this.helpers.showError(error);
     });
   }
 }

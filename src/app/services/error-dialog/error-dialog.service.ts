@@ -24,6 +24,7 @@ export class ErrorDialogService {
     }
 
     const alert = await this.alertCtrl.create({
+      backdropDismiss: false,
       header: this.tr.instant('common.error'),
       message,
       buttons: [this.tr.instant('common.ok')]

@@ -1,0 +1,140 @@
+{
+  "common" : {
+    "add" : "Adicionar",
+    "cancel" : "Cancelar",
+    "error" : "Erro",
+    "no" : "Não",
+    "ok" : "OK",
+    "proceed" : "Continuar",
+    "success" : "Sucesso",
+    "yes" : "Sim"
+  },
+  "configure" : {
+    "description" : "Configuração inicial do 2D MINI",
+    "detected-devices" : {
+      "connecting" : "Ligar para {{deviceName}}",
+      "detected-devices" : "Dispositivos detectados",
+      "no-device" : "Nenhum dispositivo TBS detectado",
+      "refresh" : "Atualizar",
+      "scanning" : "Procurando dispositivos TBS..."
+    },
+    "disconnected" : "O Bluetooth está desativado",
+    "fetch" : "Obtenção de informações do dispositivo",
+    "help-card" : {
+      "text1" : "Por favor, seleccione o dispositivo a partir da lista abaixo. Certifique-se de que você tem o Bluetooth ligado e que você está perto do dispositivo TBS",
+      "text2" : "Se nenhum dispositivo for detectado, você pode repetir a procura com o botão \"Atualizar\".",
+      "title" : "Ligar ao dispositivo"
+    },
+    "navigate-button" : "Configurar",
+    "network-header" : "Configurações De Rede",
+    "network-unreachable" : "Rede está inacessível. Pretende estabelecer nova ligação ?",
+    "proceed-header" : "SUCESSO",
+    "proceed-text" : "Dispositivo ligado com êxito à rede. Por favor, dê um nome agora.",
+    "set-network" : "Conectando-se à rede",
+    "testing" : "O dispositivo já está conectado a uma rede. Testando conectividade.",
+    "toolbar-title" : "Ligar"
+  },
+  "configure-modal" : {
+    "connect" : {
+      "connect-to-wi-fi" : "Conectar a uma rede Wi-Fi",
+      "help-text" : "Por favor, preencha as credenciais para sua rede Wi-Fi. Quando o seu dispositivo for conectado, você pode continuar clicando em \"Avançar\" botão.",
+      "ip" : "IP",
+      "missing-password" : "Por favor, preencha palavra-passe correcta",
+      "missing-ssid" : "Por favor, preencha o SSID",
+      "not-connected" : "Não conectado",
+      "password" : "Palavra-passe",
+      "proceed" : "Continuar",
+      "ssid" : "SSID",
+      "title" : "Conexão de rede",
+      "wi-fi" : "Wi-Fi",
+      "wi-fi-credentials" : "Credenciais Wi-Fi",
+      "wi-fi-credentials-help-text" : "Por favor, insira Credenciais Wi-Fi"
+    },
+    "toolbar-title" : "Ligue o dispositivo à rede"
+  },
+  "home" : {
+    "about" : "Sobre este aplicativo",
+    "bluetooth" : "Bluetooth",
+    "my-devices" : "Meu Dispositivos",
+    "network" : "Rede",
+    "new-connection" : "Adicionar novo dispositivo",
+    "new-connection-header" : "Nova Ligação",
+    "new-connection-text" : "Por favor, escolha o tipo de conexão que você deseja estabelecer.",
+    "new-connection-text-ble" : "Se o endereço IP do seu dispositivo não é conhecido, por favor use esta opção.",
+    "new-connection-text-ble-note" : "NOTA: o Bluetooth no dispositivo só está activo no assistente de arranque ou modo de Administração!",
+    "new-connection-text-network" : "Se o endereço IP do seu dispositivo é conhecido por favor escolha esta opção. Ele se conecta diretamente a tela remota.",
+    "remote-connection" : "Conexão remota",
+    "title" : "Meu Dispositivos",
+    "version" : "Versão"
+  },
+  "keys" : {
+    "add-new-key" : "Adicionar nova chave",
+    "available-keys" : "Chaves disponíveis",
+    "delete-key-question" : "Você realmente deseja apagar a chave?",
+    "empty-key-header" : "List a de chaves vazia ",
+    "empty-list-text" : "Você não tem uma chave de desbloqueio definida. Por favor adicionar",
+    "enter-key" : "Adicionar manualmente a chave",
+    "enter-key-and-content" : "Por favor, insira o nome da chave e conteúdo",
+    "import-key" : "Importar chave através de um ficheiro",
+    "key-content" : "Conteúdo da chave",
+    "key-delete" : "Apagar",
+    "key-name" : "Nome",
+    "no-key" : "Nenhuma chave adicionada",
+    "title" : "Minhas Chaves"
+  },
+  "locks" : {
+    "battery-percent" : "A bateria está a {{batteryLevel}}%",
+    "connecting-to" : "Ligando a {{deviceName}}...",
+    "description" : "Abertura de  emergência para EVVA smart lock",
+    "manage-keys" : "Gerenciar chaves",
+    "navigate-button" : "Ir para o desbloqueio de emergência",
+    "no-keys" : "Você não tem todas as chaves. Por favor, adicione",
+    "repeat-scan" : "Repita a verificação",
+    "scan-for-locks" : "Procurar fechos EVVA clicando \"Procurar fechos\"",
+    "scanning" : "Procurando fechos...",
+    "select-key" : "Selecione chave",
+    "select-lock" : "Seleccionar fecho que deseja abrir",
+    "start-scan" : "Iniciar procura",
+    "title" : "Meus fechos"
+  },
+  "my-device" : {
+    "client-name-header" : "Alteração De Nome",
+    "client-name-placeholder" : "nome do dispositivo",
+    "client-name-text" : "Você deseja alterar o nome do dispositivo ?",
+    "client-name-text-set" : "Por favor, defina um nome para o seu dispositivo",
+    "delete-header" : "Remover Dispositivo",
+    "delete-text" : "Você deseja continuar ?",
+    "label-ip" : "Mudar IP do dispositivo",
+    "label-name" : "Alterar o nome do dispositivo",
+    "save-header" : "Guardar conexão",
+    "save-text" : "Você deseja salvar esta conexão ?",
+    "settings-header" : "Definições",
+    "settings-text1" : "Por favor, escolha a opção para o dispositivo: ",
+    "settings-text2" : " com o endereço IP: "
+  },
+  "remote" : {
+    "connecting" : "Conectando-se...",
+    "connection-error" : "Erro de conexão",
+    "connection-retry" : "Repetir",
+    "description" : "Controle 2D MINI dispositivo com o seu telefone",
+    "detected-devices" : "Dispositivos detectados",
+    "device-has-no-ip" : "O dispositivo não está conectado a nenhuma rede",
+    "enter-device-ip" : "Por favor, introduza o endereço IP do Dispositivo",
+    "error" : "Dispositivo não acessível",
+    "ip" : "IP",
+    "navigate-button" : "Vá para a tela remota",
+    "obtaining-device-info" : "Obtendo informações do dispositivo",
+    "please-enter" : "Por favor, digite {{inputName}}",
+    "search-for-devices" : "Pesquisar dispositivos",
+    "searching-for-devices" : "Pesquisar dispositivos TBS",
+    "select-device" : "Por favor, seleccione o dispositivo a partir da lista",
+    "set-ip" : "Definir o IP dp dispositivo remoto ",
+    "toolbar-title" : "Tela remota"
+  },
+  "settings" : {
+    "language" : "Idioma",
+    "show-evva" : "Mostrar menu do EVVA smartlock ",
+    "system-default" : "Sistema",
+    "title" : "Definições"
+  }
+}

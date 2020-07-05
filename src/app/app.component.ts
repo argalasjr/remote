@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
-import { TranslateService, TranslateStore } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.initializeApp();
     translate.setDefaultLang('en');
 
-    translate.onLangChange.subscribe(change => console.log('lang change', change));
+    translate.onLangChange.subscribe(change => console.log('lang changed to', change.lang));
   }
 
   async ngOnInit() {

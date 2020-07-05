@@ -65,3 +65,11 @@
   --ion-color-light-shade: #d6d7d8;
   --ion-color-light-tint: #f4f5f6;
 }
+.test {
+  ion-item {
+  --width: 100%;
+  --color: black;
+  --background-color: black;
+  }
+}
+

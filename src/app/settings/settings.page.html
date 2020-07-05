@@ -14,7 +14,11 @@
       <ion-label>{{'settings.language' | translate}}</ion-label>
       <ion-select [value]="language" (ionChange)="languageChanged($event)" okText="{{'common.ok' | translate}}" cancelText="{{'common.cancel' | translate}}">
         <ion-select-option [value]="null">{{'settings.system-default' | translate}}</ion-select-option>
-        <ion-select-option [value]="'en'">English</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="de">Deutsch</ion-select-option>
+        <ion-select-option value="cs">Čeština</ion-select-option>
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="pt">Portugués</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -24,3 +28,9 @@
   </ion-list>
 
 </ion-content>
+<ion-footer  class="ion-no-border" >
+  <ion-toolbar align="center">
+    <ion-label class="ion-text-wrap">Copyright © <br> Touchless Biometric Systems AG <br>
+      {{'home.version' | translate}}: {{version}}</ion-label>
+  </ion-toolbar>
+</ion-footer>

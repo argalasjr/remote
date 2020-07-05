@@ -1,48 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
+<ion-header >
+  <ion-toolbar align="left">
+    <ion-title >
       {{'home.title' | translate}}
     </ion-title>
-    <ion-buttons slot="primary">
-      <ion-button (click)="showMenu($event)">
-        <ion-icon slot="icon-only" name="more"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-grid> 
     <ion-row>
-        <ion-col size-lg="4" size-md="6" size-sm="6" size-xs="12">
-            <ion-card style="margin: 0px">              
-              <ion-card-header><ion-card-title>My Devices</ion-card-title></ion-card-header>
+        <ion-col size-lg="4" size-md="6" size-sm="6" size-xs="12">         
+            <ion-card style="margin: 0px">                           
               <img src="assets/imgs/remote.jpg"/>
-              <ion-card-content>                              
-                  <ion-list *ngFor="let MyDevice of myDevicesList">
-                      <app-my-device [data]="MyDevice"></app-my-device>                      
+              <ion-card-content style="padding-left: 0px;">                   
+                  <ion-list  class="small-list" lines="none" *ngFor="let MyDevice of myDevicesList" >          
+                      <app-my-device style="padding-top: 0px;"[data]="MyDevice"></app-my-device>                                                  
                     </ion-list>
-
+                    <ion-item (click)="newConnection()" lines="none">                
+                      <ion-icon style="padding-left: 5px; zoom:1.5;" color="dark" name="add-circle" ></ion-icon>         
+                      <p>{{'home.new-connection' | translate}}</p>
+                      </ion-item>
               </ion-card-content>
             </ion-card>
           </ion-col>
-
-      <ion-col size-lg="4" size-md="6" size-sm="6" size-xs="12">
-          <app-configure-component></app-configure-component>
-      </ion-col>
-      
-      <ion-col *ngIf="showEvva" size-lg="4" size-md="6" size-sm="6" size-xs="12">
-        <ion-card style="margin: 0px">
-          <img src="assets/imgs/unlock.jpg" (click)="locks()"/>
-          <!-- <ion-card-header>Emergency unlock</ion-card-header> -->
-          <ion-card-content>
-            <p>{{'locks.description' | translate}}</p>
-            <ion-button fill="clear" size="small" (click)="locks()">
-              {{'locks.navigate-button' | translate}}
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

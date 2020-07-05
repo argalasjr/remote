@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone, EventEmitter, Output } from '@angular/core';
+import { Platform} from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tabs',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
+  @Output() showEvvaEvent: EventEmitter<any> = new EventEmitter();
+  showEvva: boolean;
+  constructor(
+              private cd: ChangeDetectorRef,
+              private ngZone: NgZone,
+              private platform: Platform,
+              private storage: Storage,
+              ) {
+   }
 
-  constructor() { }
+  async ngOnInit() {
+  await  this.platform.ready().then(() => {
+    this.ngZone.run(() => {
+      this.showEvvaEvent.subscribe((showEvva) => {
+        this.showEvva = showEvva;
+        this.cd.detectChanges();
+      });
+    });
+  });
+  }
 
-  ngOnInit() {
+  async ionViewWillEnter() {
+    this.showEvva = await this.storage.get('showEvva');
   }
 
 }

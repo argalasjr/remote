@@ -1,0 +1,100 @@
+{
+  "common" : {
+    "add" : "Přidat",
+    "cancel" : "Zrušit",
+    "error" : "Chyba",
+    "no" : "Ne",
+    "ok" : "OK",
+    "success" : "Úspěch",
+    "yes" : "Ano"
+  },
+  "configure" : {
+    "description" : "Počáteční konfigurace 2D Mini",
+    "detected-devices" : {
+      "connecting" : "Připojení na {{deviceName}}",
+      "detected-devices" : "Zjištěné zařízení",
+      "no-device" : "Nebylo nalezeno žádné TBS zařízení",
+      "refresh" : "Aktualizovat",
+      "scanning" : "Hledání okolních TBS zařízení"
+    },
+    "help-card" : {
+      "text1" : "Prosím, vyberte zařízení ze seznamu níže. Ujistěte se, že máte Bluetooth zapnutý a že jste v blízkosti TBS zařízení.",
+      "text2" : "Pokud není zařízení rozpoznáno, můžete opakovat hledání tlačítkem \"Aktualizovat\".",
+      "title" : "Připojení k zařízení"
+    },
+    "navigate-button" : "Nakonfigurovat",
+    "toolbar-title" : "Připojit"
+  },
+  "configure-modal" : {
+    "connect" : {
+      "connect-to-wi-fi" : "Připojení k Wi-Fi",
+      "help-text" : "Vyplňte prosím přihlašovací údaje pro vaši Wi-Fi síť. Když bude vaše zařízení připojeno, můžete pokračovat kliknutím na tlačítko \"Pokračovat\".",
+      "ip" : "IP",
+      "missing-password" : "Vyplňte prosím správné heslo",
+      "missing-ssid" : "Prosím, vyplňte SSID",
+      "not-connected" : "Není připojen",
+      "password" : "Heslo",
+      "proceed" : "Pokračovat",
+      "ssid" : "SSID",
+      "title" : "Připojení zařízení k síti",
+      "wi-fi" : "Wi-Fi",
+      "wi-fi-credentials" : "Přihlášení k Wi-Fi",
+      "wi-fi-credentials-help-text" : "Prosím, zadejte přihlašovací údaje k síti Wi-Fi"
+    },
+    "toolbar-title" : "Připojte zařízení k síti"
+  },
+  "home" : {
+    "about" : "O této aplikaci",
+    "version" : "Verze"
+  },
+  "keys" : {
+    "add-new-key" : "Přidat nový klíč",
+    "available-keys" : "Klíče k dispozici",
+    "delete-key-question" : "Opravdu chcete odstranit vybraný klíč?",
+    "enter-key" : "Zadat klíč ručně",
+    "enter-key-and-content" : "Prosím, zadejte název klíče a obsah",
+    "import-key" : "Importovat ze souboru",
+    "key-content" : "Klíč",
+    "key-delete" : "Odstranit",
+    "key-name" : "Jméno",
+    "no-key" : "Nemáte žádné klíče"
+  },
+  "locks" : {
+    "battery-percent" : "Baterie je na {{batteryLevel}}%",
+    "connecting-to" : "Připojení k {{deviceName}}...",
+    "description" : "Nouzové otevření EVVA smart lock",
+    "manage-keys" : "Spravovat klíče",
+    "navigate-button" : "Jít na nouzové odemknutí",
+    "no-keys" : "Nemáte žádné klíče. Prosím, přidejte je.",
+    "repeat-scan" : "Opakuj skenování",
+    "scan-for-locks" : "Prosím vyhledejte nedaleké zámky EVVA stiskem \"Opakuj skenování\"",
+    "scanning" : "Hledám zámky v okolí...",
+    "select-key" : "Zvolte klíč",
+    "select-lock" : "Vyberte zámek, který chcete otevřít",
+    "start-scan" : "Vyhledat"
+  },
+  "remote" : {
+    "connecting" : "Připojení...",
+    "connection-error" : "Chyba připojení",
+    "connection-retry" : "Opakovat",
+    "description" : "Ovládání 2D Mini pomocí telefonu",
+    "detected-devices" : "Zjištěné zařízení",
+    "device-has-no-ip" : "Přístroj není připojen k žádné síti",
+    "enter-device-ip" : "Prosím, zadejte adresu IP adresu zařízení",
+    "ip" : "IP",
+    "navigate-button" : "Přejít na vzdálenou obrazovku",
+    "obtaining-device-info" : "Získávám informace o zařízení",
+    "please-enter" : "Prosím, zadejte {{inputName}}",
+    "search-for-devices" : "Hledání zařízení",
+    "searching-for-devices" : "Hledat v okolí TBS zařízení",
+    "select-device" : "Prosím, vyberte zařízení ze seznamu",
+    "set-ip" : "Nastavení IP adresy vzdáleného zařízení",
+    "toolbar-title" : "Vzdálená obrazovka"
+  },
+  "settings" : {
+    "language" : "Jazyk",
+    "show-evva" : "Zobrazit nouzové otevření EVVA zámku",
+    "system-default" : "Výchozí",
+    "title" : "Nastavení"
+  }
+}

@@ -5,6 +5,7 @@
     "error" : "common.error",
     "no" : "common.no",
     "ok" : "common.ok",
+    "proceed" : "common.proceed",
     "success" : "common.success",
     "yes" : "common.yes"
   },
@@ -17,12 +18,20 @@
       "refresh" : "configure.detected-devices.refresh",
       "scanning" : "configure.detected-devices.scanning"
     },
+    "disconnected" : "configure.disconnected",
+    "fetch" : "configure.fetch",
     "help-card" : {
       "text1" : "configure.help-card.text1",
       "text2" : "configure.help-card.text2",
       "title" : "configure.help-card.title"
     },
     "navigate-button" : "configure.navigate-button",
+    "network-header" : "configure.network-header",
+    "network-unreachable" : "configure.network-unreachable",
+    "proceed-header" : "configure.proceed-header",
+    "proceed-text" : "configure.proceed-text",
+    "set-network" : "configure.set-network",
+    "testing" : "configure.testing",
     "toolbar-title" : "configure.toolbar-title"
   },
   "configure-modal" : {
@@ -45,6 +54,16 @@
   },
   "home" : {
     "about" : "home.about",
+    "bluetooth" : "home.bluetooth",
+    "my-devices" : "home.my-devices",
+    "network" : "home.network",
+    "new-connection" : "home.new-connection",
+    "new-connection-header" : "home.new-connection-header",
+    "new-connection-text" : "home.new-connection-text",
+    "new-connection-text-ble" : "home.new-connection-text-ble",
+    "new-connection-text-ble-note" : "home.new-connection-text-ble-note",
+    "new-connection-text-network" : "home.new-connection-text-network",
+    "remote-connection" : "home.remote-connection",
     "title" : "home.title",
     "version" : "home.version"
   },
@@ -52,6 +71,8 @@
     "add-new-key" : "keys.add-new-key",
     "available-keys" : "keys.available-keys",
     "delete-key-question" : "keys.delete-key-question",
+    "empty-key-header" : "keys.empty-key-header",
+    "empty-list-text" : "keys.empty-list-text",
     "enter-key" : "keys.enter-key",
     "enter-key-and-content" : "keys.enter-key-and-content",
     "import-key" : "keys.import-key",
@@ -59,7 +80,7 @@
     "key-delete" : "keys.key-delete",
     "key-name" : "keys.key-name",
     "no-key" : "keys.no-key",
-    "toolbar-title" : "keys.toolbar-title"
+    "title" : "keys.title"
   },
   "locks" : {
     "battery-percent" : "locks.battery-percent",
@@ -74,7 +95,22 @@
     "select-key" : "locks.select-key",
     "select-lock" : "locks.select-lock",
     "start-scan" : "locks.start-scan",
-    "toolbar-title" : "locks.toolbar-title"
+    "title" : "locks.title"
+  },
+  "my-device" : {
+    "client-name-header" : "my-device.client-name-header",
+    "client-name-placeholder" : "my-device.client-name-placeholder",
+    "client-name-text" : "my-device.client-name-text",
+    "client-name-text-set" : "my-device.client-name-text-set",
+    "delete-header" : "my-device.delete-header",
+    "delete-text" : "my-device.delete-text",
+    "label-ip" : "my-device.label-ip",
+    "label-name" : "my-device.label-name",
+    "save-header" : "my-device.save-header",
+    "save-text" : "my-device.save-text",
+    "settings-header" : "my-device.settings-header",
+    "settings-text1" : "my-device.settings-text1",
+    "settings-text2" : "my-device.settings-text2"
   },
   "remote" : {
     "connecting" : "remote.connecting",
@@ -84,6 +120,7 @@
     "detected-devices" : "remote.detected-devices",
     "device-has-no-ip" : "remote.device-has-no-ip",
     "enter-device-ip" : "remote.enter-device-ip",
+    "error" : "remote.error",
     "ip" : "remote.ip",
     "navigate-button" : "remote.navigate-button",
     "obtaining-device-info" : "remote.obtaining-device-info",

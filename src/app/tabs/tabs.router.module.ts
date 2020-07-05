@@ -26,6 +26,24 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'locks',
+        children: [
+          {
+            path: '',
+            loadChildren: '../locks/locks.module#LocksPageModule'
+          }
+        ]
+      },
+      {
+        path: 'keys',
+        children: [
+          {
+            path: '',
+            loadChildren: '../keys/keys.module#KeysPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'

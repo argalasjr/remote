@@ -13,19 +13,6 @@
         </ion-button>
       </ion-card-content>
     </ion-card>
-    <ion-card *ngIf="idle">
-      <img *ngIf="!(landscape$ | async)" class="hide-sm" src="assets/imgs/remote.jpg" />
-      <ion-list lines="none">
-        <ion-item button (click)="setRemoteIp()">
-          <ion-icon name="settings" slot="start"></ion-icon>
-          {{'remote.set-ip' | translate}}
-        </ion-item>
-        <ion-item button (click)="scan()">
-          <ion-icon name="search" slot="start"></ion-icon>
-          {{'remote.search-for-devices' | translate}}
-        </ion-item>
-      </ion-list>
-    </ion-card>
   </ion-content>
 </ng-container>
 

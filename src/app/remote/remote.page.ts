@@ -1,18 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer, SafeUrl, EventManager } from '@angular/platform-browser';
+import { Component, ElementRef, OnInit, ViewChild, NgZone } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { NavController, AlertController, PopoverController } from '@ionic/angular';
-import { AlertInput, TextFieldTypes } from '@ionic/core';
+import { NavController, AlertController } from '@ionic/angular';
+import { TextFieldTypes } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
 import { interval, Subject, Subscription, fromEvent, Observable } from 'rxjs';
-import { exhaustMap, sample, filter, map, startWith, mapTo } from 'rxjs/operators';
+import { exhaustMap, sample, map, startWith, mapTo } from 'rxjs/operators';
 import { ErrorDialogService } from '../services/error-dialog/error-dialog.service';
-import { MenuPopover } from '../menu';
-import { DeviceScannerService } from '../services/device-scanner/device-scanner.service';
-import { LoadingService } from '../services/loading/loading.service';
-import { RemoteDeviceService } from '../services/remote-screen/remote-device.service';
 import { ScreenService } from '../services/remote-screen/screen.service';
-
+import { timeout} from 'rxjs/operators';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 interface Coord {
   x: number;
   y: number;
@@ -43,20 +40,24 @@ export class RemotePage implements OnInit {
   @ViewChild('image') image: ElementRef<HTMLImageElement>;
 
   constructor(
-    private screen: ScreenService, private remoteDevice: RemoteDeviceService, private sanitization: DomSanitizer,
-    private alertCtrl: AlertController, private popoverCtrl: PopoverController, private loadingService: LoadingService,
-    private deviceScanner: DeviceScannerService, private activatedRoute: ActivatedRoute, private tr: TranslateService,
-    private helpers: ErrorDialogService, private navCtrl : NavController
+    private screen: ScreenService,
+    private sanitization: DomSanitizer,
+    private alertCtrl: AlertController,
+    private activatedRoute: ActivatedRoute,
+    private tr: TranslateService,
+    private helpers: ErrorDialogService,
+    private navCtrl: NavController,
+    private ngZone: NgZone,
+    private screenOrientation: ScreenOrientation
   ) { }
 
   async ngOnInit() {
     console.log('RemotePage::ngOnInit');
-
     this.setState({ idle: true, connecting: false, connectionError: false });
-
     this.deviceIp = this.activatedRoute.snapshot.paramMap.get('ip');
     const subscribe = this.activatedRoute.snapshot.paramMap.get('subscribe') === 'true';
     console.log('remote device ip', this.deviceIp, { subscribe });
+
 
     if (subscribe && this.deviceIp) {
       this.subscribe();
@@ -84,13 +85,15 @@ export class RemotePage implements OnInit {
     this.unsubscribe();
     this.setState({ idle: false, connecting: true, connectionError: false });
     this.subscription = interval(250).pipe(
-      exhaustMap(i => this.screen.GetFrame(this.deviceIp, i === 0 ? 1 : 0))
+      exhaustMap(i => this.screen.GetFrame(this.deviceIp, i === 0 ? 1 : 0)),
+      timeout(5000)
     ).subscribe(async (data) => {
+      this.screenOrientation.unlock()
       this.setState({ idle: false, connecting: false, connectionError: false });
-
       if (data.keyboard && !this.input) {
         console.log(data.keyboard);
         this.input = await this.alertCtrl.create({
+          backdropDismiss: false,
           buttons: [{
             text: this.tr.instant('common.ok'),
             handler: (inputData) => {
@@ -123,7 +126,6 @@ export class RemotePage implements OnInit {
             type: data.keyboard.type as TextFieldTypes
           }],
           message: this.tr.instant('remote.please-enter', { inputName: data.keyboard.inputName }),
-          backdropDismiss: false
         });
         this.input.present();
         return;
@@ -136,10 +138,12 @@ export class RemotePage implements OnInit {
       if (data.image) {
         this.imageSrc = this.sanitization.bypassSecurityTrustResourceUrl('data:image/jpeg;charset=utf-8;base64,' + data.image);
       }
-    }, error => {
+    }, err => {
       this.setState({ idle: false, connecting: false, connectionError: true });
-      this.helpers.showError(error);
-    });
+      this.helpers.showError(this.tr.instant('remote.error'));
+      this.NavigateToRootPage();
+    },
+    );
 
     this.moveSubscription = this.move.pipe(sample(interval(200))).subscribe(c => {
       console.log({ type: 'positionChanged', x: c.x, y: c.y });
@@ -148,12 +152,14 @@ export class RemotePage implements OnInit {
         keyboard: null
       });
     });
+
   }
 
   unsubscribe() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     if (this.subscription) {
       this.subscription.unsubscribe();
-      this.NavigateToRootPage()      
+      this.NavigateToRootPage();
     }
 
     if (this.moveSubscription) {
@@ -180,51 +186,8 @@ export class RemotePage implements OnInit {
     return {
       x: Math.round(x * target.naturalWidth / target.width),
       y: Math.round(y * target.naturalHeight / target.height)
-    };    
+    };
   }
-
-  async setRemoteIp() {
-    const oldIp = await this.remoteDevice.getIp();
-    this.alertCtrl.create({
-      message: this.tr.instant('remote.enter-device-ip'),
-      inputs: [
-        { name: 'ip', placeholder: this.tr.instant('remote.ip'), value: oldIp, type: 'text' }
-      ],
-      buttons: [
-        this.tr.instant('common.cancel'),
-        {
-          text: this.tr.instant('common.ok'),
-          handler: data => {
-            const newIp: string = data.ip;
-            if (!newIp || !newIp.trim()) {
-              return false;
-            }
-
-            this.remoteDevice.setIp(newIp.trim()).then(() => {
-              this.deviceIp = newIp;
-              this.subscribe();
-            });
-          }
-        }
-      ]
-    }).then(alert => alert.present());
-  }
-
-  async showMenu(event: Event) {
-    const menu = await MenuPopover.create(this.popoverCtrl, {
-      menuItems: [{
-        icon: 'settings',
-        text: this.tr.instant('remote.set-ip'),
-        callback: () => { menu.dismiss(); this.setRemoteIp(); }
-      }, {
-        icon: 'search',
-        text: this.tr.instant('remote.search-for-devices'),
-        callback: () => { menu.dismiss(); this.scan(); }
-      }]
-    }, event);
-    menu.present();
-  }
-
 
   touchStart($event: TouchEvent) {
     const c = this.coords($event);
@@ -255,62 +218,8 @@ export class RemotePage implements OnInit {
   }
 
    NavigateToRootPage() {
-    this.navCtrl.navigateRoot("tabs")
-  }
-
-  async getDeviceIpAndConnect(deviceId: string) {
-    await this.loadingService.show({ message: this.tr.instant('remote.obtaining-device-info') });
-
-    let ip = null;
-    try {
-      ip = await this.deviceScanner.getDeviceIp(deviceId);
-      this.loadingService.hide();
-    } catch (error) {
-      this.loadingService.hide();
-      this.helpers.showError(error);
-      return;
-    }
-
-    if (ip) {
-      await this.remoteDevice.setIp(ip);
-      this.subscribe();
-    }
-  }
-
-  async scan() {
-    await this.loadingService.show({ message: this.tr.instant('remote.searching-for-devices') });
-
-    const devices = await this.deviceScanner.getTbsDevices();
-    console.log(devices);
-
-    this.loadingService.hide();
-
-    if (devices.length === 0) {
-      const alert = await this.alertCtrl.create({ message: 'No device found', buttons: [this.tr.instant('common.ok')] });
-      await alert.present();
-      return;
-    }
-
-    const selection = await this.alertCtrl.create({
-      header: this.tr.instant('remote.detected-devices'),
-      message: this.tr.instant('remote.select-device'),
-      buttons: [this.tr.instant('common.cancel'), {
-        text: this.tr.instant('common.ok'),
-        handler: deviceId => {
-          console.log('selected', deviceId);
-          this.getDeviceIpAndConnect(deviceId);
-        }
-      }],
-      inputs: devices.map((device, index) => {
-        const input: AlertInput = {
-          type: 'radio',
-          label: device.name || device.id,
-          value: device.id,
-          checked: index === 0
-        };
-        return input;
-      })
+    this.ngZone.run(() => {
+      this.navCtrl.navigateForward('tabs');
     });
-    selection.present();
   }
 }

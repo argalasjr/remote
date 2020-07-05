@@ -1,11 +1,22 @@
-<ion-item >
-    <ion-thumbnail item-start>
-  <img [src]="'assets/imgs/devices/' + data.key + '.png'" implicit_width="40" height="40" (click)="remote_connect(' + data.ip + ')"/>
+
+<ion-row>
+<ion-item-sliding style="margin: 0px">
+<ion-item class="item item-icon-left" style="margin: 0px">
+  <ion-thumbnail item-start>
+    <img [src]="'assets/imgs/devices/' + data.key + '.png'" (click)="remote_connect(' + data.ip + ')"/>
   </ion-thumbnail>
-<p (click)="remote_connect(' + data.ip + ')" >
-  {{data.key}}
-</p>
-<ion-tab-button item-end>
-    <ion-icon name="settings" (click)="setRemoteIp()"></ion-icon>
-     </ion-tab-button>
+  <p (click)="remote_connect(' + data.ip + ')"> {{data.clientName}} </p>
+  <ion-item-option slot="end" color="white" (click)="settings()">
+  <ion-icon  style="font-size:x-large; "name="settings" ></ion-icon>
+</ion-item-option>
 </ion-item>
+
+<ion-item-options side="end">
+  <ion-item-option color="danger" (click)="delete()">
+    <ion-icon name="trash" slot="start"></ion-icon>
+    {{'keys.key-delete' | translate}}
+  </ion-item-option>
+</ion-item-options>
+</ion-item-sliding>
+
+</ion-row>

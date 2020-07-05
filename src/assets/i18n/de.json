@@ -1,0 +1,140 @@
+{
+  "common" : {
+    "add" : "Hinzufügen",
+    "cancel" : "Abbrechen",
+    "error" : "Fehler",
+    "no" : "Nein",
+    "ok" : "OK",
+    "proceed" : "Weiter",
+    "success" : "Erfolgreich",
+    "yes" : "Ja"
+  },
+  "configure" : {
+    "description" : "Erstkonfiguration 2D MINI",
+    "detected-devices" : {
+      "connecting" : "Verbinde mit {{deviceName}}",
+      "detected-devices" : "Erkannte Geräte",
+      "no-device" : "Kein TBS-Gerät erkannt",
+      "refresh" : "Wiederholen",
+      "scanning" : "Suche nach TBS-Geräten..."
+    },
+    "disconnected" : "Bluetooth ist inaktiv",
+    "fetch" : "Lade Geräteinformationen",
+    "help-card" : {
+      "text1" : "Bitte Gerät aus der Liste auswählen und sicherstellen, daß das Gerät in der Nähe und Bluetooth eingeschalten ist.",
+      "text2" : "Falls Gerät nicht erkannt wird bitte mit 'Wiederholen' erneut versuchen.",
+      "title" : "Verbinde mit Gerät"
+    },
+    "navigate-button" : "Konfigurieren",
+    "network-header" : "Netzwerkeinstellungen",
+    "network-unreachable" : "Gerät nicht erreichbar. Neue Verbindung aufbauen?",
+    "proceed-header" : "Erfolgreich",
+    "proceed-text" : "Gerät erfolgreich mit Netzwerk verbunden. Bitte Gerät benennen.",
+    "set-network" : "Verbinde mit Netzwerk",
+    "testing" : "Gerät ist bereits mit Netzwerk verbunden. Teste Verbindung.",
+    "toolbar-title" : "Verbinden"
+  },
+  "configure-modal" : {
+    "connect" : {
+      "connect-to-wi-fi" : "Verbinde mit WLAN",
+      "help-text" : "Bitte WLAN-Verbindungsdaten eingeben. Sobald das Gerät verbunden ist bitte mit 'Weiter' fortsetzen.",
+      "ip" : "IP",
+      "missing-password" : "Bitte Passwort eingeben",
+      "missing-ssid" : "Bitte SSID eingeben",
+      "not-connected" : "Nicht verbunden",
+      "password" : "Passwort",
+      "proceed" : "Weiter",
+      "ssid" : "SSID",
+      "title" : "Netzwerkverbindung",
+      "wi-fi" : "WLAN",
+      "wi-fi-credentials" : "WLAN-Verbindungsdaten",
+      "wi-fi-credentials-help-text" : "Bitte WLAN-Verbindungsdaten eingeben"
+    },
+    "toolbar-title" : "Verbinde Gerät mit Netzwerk"
+  },
+  "home" : {
+    "about" : "App-Info",
+    "bluetooth" : "Bluetooth",
+    "my-devices" : "Meine Geräte",
+    "network" : "Netzwerk",
+    "new-connection" : "Neues Gerät hinzufügen",
+    "new-connection-header" : "Neue Verbindung",
+    "new-connection-text" : "Bitte Verbindungstyp auswählen",
+    "new-connection-text-ble" : "Bei unbekannter IP-Adresse bitte diese Option auswählen.",
+    "new-connection-text-ble-note" : "HINWEIS: Bluetooth ist auf dem Gerät nur im Start- und Admin-Modus aktiv!",
+    "new-connection-text-network" : "Falls die IP-Adresse des Gerätes bekannt ist bitte diese Option auswählen. Die Fernsteuerung wird direkt gestartet.",
+    "remote-connection" : "Fernsteuerung",
+    "title" : "Meine Geräte",
+    "version" : "Version"
+  },
+  "keys" : {
+    "add-new-key" : "Neuen Schlüssel hinzufügen",
+    "available-keys" : "Verfügbare Schlüssel",
+    "delete-key-question" : "Schlüssel wirklich löschen?",
+    "empty-key-header" : "Leere Schlüsselliste",
+    "empty-list-text" : "Kein Entsperrschlüssel definiert. Bitte hinzufügen.",
+    "enter-key" : "Schlüssel manuell hinzufügen",
+    "enter-key-and-content" : "Bitte Schlüssel benennen und Daten eingeben",
+    "import-key" : "Schlüssel aus Datei importieren",
+    "key-content" : "Schlüsselinhalt",
+    "key-delete" : "Löschen",
+    "key-name" : "Name",
+    "no-key" : "Kein Schlüssel hinzugefügt",
+    "title" : "Meine Schlüssel"
+  },
+  "locks" : {
+    "battery-percent" : "Batteriestand {{batteryLevel}}%",
+    "connecting-to" : "Verbinde mit {{deviceName}}...",
+    "description" : "EVVA Smartlock Notöffnung",
+    "manage-keys" : "Schlüssel verwalten",
+    "navigate-button" : "Gehe zu Notöffnung",
+    "no-keys" : "Keine Schlüssel definiert. Bitte hinzufügen",
+    "repeat-scan" : "Suche wiederholen",
+    "scan-for-locks" : "Suche nach EVVA-Smartlocks in Reichweite mit 'Suche starten'",
+    "scanning" : "Suche nach EVVA-Smartlocks in Reichweite...",
+    "select-key" : "Schlüssel auswählen",
+    "select-lock" : "Wähle Smartlock zur Öffnung aus",
+    "start-scan" : "Suche starten",
+    "title" : "Meine Smartlocks"
+  },
+  "my-device" : {
+    "client-name-header" : "Name ändern",
+    "client-name-placeholder" : "Gerätename",
+    "client-name-text" : "Soll der Gerätename geändert werden?",
+    "client-name-text-set" : "Bitte Gerät benennen",
+    "delete-header" : "Gerät löschen",
+    "delete-text" : "Fortsetzen?",
+    "label-ip" : "Geräte-IP ändern",
+    "label-name" : "Gerätename ändern",
+    "save-header" : "Verbindung speichern",
+    "save-text" : "Soll die Verbindung gespeichert werden?",
+    "settings-header" : "Einstellungen",
+    "settings-text1" : "Bitte Option auswählen für Gerät:",
+    "settings-text2" : "mit IP-Adresse:"
+  },
+  "remote" : {
+    "connecting" : "Verbinde...",
+    "connection-error" : "Verbindungsfehler",
+    "connection-retry" : "Wiederholen",
+    "description" : "2D MINI mit Smartphone steuern",
+    "detected-devices" : "Erkannte Geräte",
+    "device-has-no-ip" : "Gerät nicht verbunden mit Netzwerk",
+    "enter-device-ip" : "Bitte IP-Adresse eingeben",
+    "error" : "Gerät nicht erreichbar",
+    "ip" : "IP",
+    "navigate-button" : "Gehe zu Fernsteuerung",
+    "obtaining-device-info" : "Lade Geräteinformationen",
+    "please-enter" : "Bitte {{inputName}} eingeben",
+    "search-for-devices" : "Suche nach Geräten",
+    "searching-for-devices" : "Suche nach TBS-Geräten in Reichweite",
+    "select-device" : "Bitte Gerät in Liste auswählen",
+    "set-ip" : "Setze Geräte-IP für Fernsteuerung",
+    "toolbar-title" : "Fernsteuerung"
+  },
+  "settings" : {
+    "language" : "Sprache",
+    "show-evva" : "Zeige EVVA-Smartlock Funktionen",
+    "system-default" : "System",
+    "title" : "Einstellungen"
+  }
+}

@@ -1,12 +1,11 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
-import { AlertController, NavController, Platform, PopoverController } from '@ionic/angular';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 import { AlertInput } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
 import { map, mergeMap, take, tap } from 'rxjs/operators';
 import { ErrorDialogService } from '../services/error-dialog/error-dialog.service';
 import { PeripheralData } from '../interfaces/ble';
-import { MenuPopover } from '../menu';
 import { EvvaService } from '../services/evva/evva.service';
 import { computeSession } from '../services/evva/messages';
 import { DisengageMode } from '../services/evva/types';
@@ -28,14 +27,26 @@ export class LocksPage {
   scanning = false;
 
   constructor(
-    public navCtrl: NavController, private platform: Platform, private cd: ChangeDetectorRef,
-    private evva: EvvaService, private keysProvider: KeysService, private alertCtrl: AlertController,
-    private popoverCtrl: PopoverController, private loadingService: LoadingService, private ble: BLE,
-    private tr: TranslateService, private helpers: ErrorDialogService,
+    public navCtrl: NavController,
+    private platform: Platform,
+    private cd: ChangeDetectorRef,
+    private evva: EvvaService,
+    private keysProvider: KeysService,
+    private alertCtrl: AlertController,
+    private loadingService: LoadingService,
+    private ble: BLE,
+    private tr: TranslateService,
+    private helpers: ErrorDialogService,
+    private ngZone: NgZone
   ) { }
 
   async startScan() {
     await this.platform.ready();
+
+    if (this.keys.length === 0) {
+      this.alertNoKeys();
+      return;
+    }
 
     if (this.scanning) {
       return;
@@ -84,10 +95,13 @@ export class LocksPage {
       return;
     }
 
-    if (this.keys.length === 1) {
+    if (this.keys.length === 0) {
+      this.alertNoKeys();
+    } else if (this.keys.length === 1) {
       this.connect(device, this.keys[0].value);
     } else {
       const alert = await this.alertCtrl.create({
+        backdropDismiss: false,
         header: this.tr.instant('locks.select-key'),
         inputs: this.keys.map((key, index) => {
           const input: AlertInput = {
@@ -134,7 +148,7 @@ export class LocksPage {
       mergeMap(() => this.evva.syncStart(device.id)),
       map(syncStartResponse => {
         return {
-          syncStartResponse: syncStartResponse,
+          syncStartResponse,
           identifier: computeSession(key, syncStartResponse),
         };
       }),
@@ -154,6 +168,7 @@ export class LocksPage {
         console.log('complete');
         this.ble.disconnect(device.id);
         this.alertCtrl.create({
+          backdropDismiss: false,
           header: this.tr.instant('common.success'),
           message: this.tr.instant('locks.battery-percent', { batteryLevel }),
           buttons: [this.tr.instant('common.ok')]
@@ -163,25 +178,23 @@ export class LocksPage {
   }
 
   manageKeys() {
-    this.navCtrl.navigateForward(['keys']);
-  }
-
-  async showMenu(event) {
-    const menu = await MenuPopover.create(this.popoverCtrl, {
-      menuItems: [{
-        icon: 'key',
-        text: this.tr.instant('keys.toolbar-title'),
-        callback: () => {
-          menu.dismiss();
-          this.navCtrl.navigateForward('keys');
-        }
-      }],
-    }, event);
-    await menu.present();
+    this.ngZone.run(() => {
+    this.navCtrl.navigateForward(['tabs/keys']);
+    });
   }
 
   async ionViewWillEnter() {
     this.keys = await this.keysProvider.getKeys();
     console.log('Home ionViewWillEnter; keys =', this.keys);
+  }
+
+  async alertNoKeys() {
+    this.alertCtrl.create({
+      backdropDismiss: false,
+      header: this.tr.instant('keys.empty-key-header'),
+      message: this.tr.instant('keys.empty-key-text'),
+      buttons: [ {
+      text: this.tr.instant('common.ok'),
+    }]}).then(alrt => alrt.present());
   }
 }

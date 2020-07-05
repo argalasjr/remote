@@ -72,7 +72,7 @@ export class ScreenService {
     }
 
     GetFrame(ip: string, forceFullFrame: number): Observable<{ image: string; keyboard: IKeyboardInput; }> {
-        return this.sendRequest<{ image: string; keyboard: IKeyboardInput; }>(ip, 'GetFrame', { forceFullFrame: forceFullFrame });
+        return this.sendRequest<{ image: string; keyboard: IKeyboardInput; }>(ip, 'GetFrame', { forceFullFrame });
     }
 
     SetInput(ip: string, input: IInput) {

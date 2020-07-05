@@ -1,0 +1,115 @@
+{
+  "common" : {
+    "add" : "Agregar",
+    "cancel" : "Cancelar",
+    "error" : "Error",
+    "no" : "No",
+    "ok" : "OK",
+    "success" : "Exito",
+    "yes" : "Si"
+  },
+  "configure" : {
+    "description" : "Configuración inicial de 2D Mini",
+    "detected-devices" : {
+      "connecting" : "Conectando a {{Nombre Dispositivo}}",
+      "detected-devices" : "Di´sp´psitivos Borrados",
+      "no-device" : "No se detectó ningún dispositivo TBS cercano",
+      "refresh" : "Refrescar",
+      "scanning" : "Escaneo de dispositivos TBS cercanos"
+    },
+    "help-card" : {
+      "text1" : "Seleccione el dispositivo de la lista a continuación. Asegúrese de tener Bluetooth activado y de que esté cerca del dispositivo TBS.",
+      "text2" : "Si no se detecta ningún dispositivo, puede repetir el descubrimiento con el botón \"Actualizar\"",
+      "title" : "Conectar a el dispositivo"
+    },
+    "navigate-button" : "Configurar",
+    "toolbar-title" : "Conectar"
+  },
+  "configure-modal" : {
+    "connect" : {
+      "connect-to-wi-fi" : "Conectar a Wi-Fi",
+      "help-text" : "Complete las credenciales para su red Wi-Fi. Cuando se conecte su dispositivo, puede continuar haciendo clic en el botón \"Continuar\".",
+      "ip" : "IP",
+      "missing-password" : "Por favor complete con la contraseña",
+      "missing-ssid" : "Por favor complete el SSID",
+      "not-connected" : "No conectado",
+      "password" : "Contraseña",
+      "proceed" : "Proceder",
+      "ssid" : "SSID",
+      "title" : "Conexion de red del dispositvo",
+      "wi-fi" : "Wi-Fi",
+      "wi-fi-credentials" : "Credenciales de Wi-Fi",
+      "wi-fi-credentials-help-text" : "Por favor ingrese las credenciales de Wi-Fi"
+    },
+    "toolbar-title" : "Conecte el dispositivo a la red"
+  },
+  "home" : {
+    "about" : "Acerca de la aplicacion",
+    "my-devices" : "Mis dipositivos",
+    "remote-connection" : "Conexion remota",
+    "title" : "Bienvenido a TBS Remote",
+    "version" : "Version"
+  },
+  "keys" : {
+    "add-new-key" : "Add nueva clave",
+    "available-keys" : "Claves dsiponibles",
+    "delete-key-question" : "¿Realmente quieres eliminar la clave seleccionada?",
+    "enter-key" : "Ingrese la clave manualmente",
+    "enter-key-and-content" : "Por favor, introduzca el nombre de la clave y el contenido",
+    "import-key" : "Importar de archivo",
+    "key-content" : "Contenido de la clave",
+    "key-delete" : "Borrar",
+    "key-name" : "Nombre",
+    "no-key" : "Ninguna clave agregada"
+  },
+  "locks" : {
+    "battery-percent" : "La batería está encendida {{nivel de bateria}}%",
+    "connecting-to" : "Conectando a {{nombre del disposito}}...",
+    "description" : "Emergencia abierta de la cerradura inteligente EVVA",
+    "manage-keys" : "Manejo de Claves",
+    "navigate-button" : "Ir a desbloqueo de emergencia",
+    "no-keys" : "No tienes llaves. Por favor agrégalos",
+    "repeat-scan" : "Repetir es escaneo",
+    "scan-for-locks" : "Busque las cerraduras EVVA cercanos haciendo clic en \"Iniciar análisis\"",
+    "scanning" : "Buscando cerraduras cercanas ...",
+    "select-key" : "Seleccione clave",
+    "select-lock" : "Seleccione el candado que desea abrir",
+    "start-scan" : "Comerzar escaneo"
+  },
+  "my-device" : {
+    "client-name-header" : "Cambio de nombre",
+    "client-name-placeholder" : "nombre del dispositivo",
+    "client-name-text" : "¿Quieres cambiar el nombre de tu dispositivo?",
+    "delete-header" : "Remover dispositivo",
+    "delete-text" : "¿Usted queire continuar?",
+    "label-ip" : "Cambie el IP del dispositivo",
+    "label-name" : "Cambien el nombre del dispositivo",
+    "save-header" : "Guardar conexion",
+    "save-text" : "¿Quieres guardar esta conexión?",
+    "settings-header" : "Parámetros"
+  },
+  "remote" : {
+    "connecting" : "Conectando",
+    "connection-error" : "Errror de conexion",
+    "connection-retry" : "Reintentar",
+    "description" : "Controle el dispositivo 2D Mini con su teléfono",
+    "detected-devices" : "Dispositivos borrados",
+    "device-has-no-ip" : "El dispositivo no está conectado a ninguna red.",
+    "enter-device-ip" : "Por favor ingrese direccion IP del dispositivo",
+    "ip" : "IP",
+    "navigate-button" : "Ir a la pantalla remota",
+    "obtaining-device-info" : "Obteniendo infromacion del dispositivo",
+    "please-enter" : "Por favor ingrese {{Nombre de la entrada}}",
+    "search-for-devices" : "Busqueda por dispositivos",
+    "searching-for-devices" : "Buscando dispositivos TBS cercanos",
+    "select-device" : "Por favor seleccione el dispositivo de la lista",
+    "set-ip" : "Ingrese el IP del dispositivo remoto",
+    "toolbar-title" : "Pantalla Remota"
+  },
+  "settings" : {
+    "language" : "Idioma",
+    "show-evva" : "Mostrar desbloqueo de emergencia EVVA",
+    "system-default" : "Sistema",
+    "title" : "Parametros"
+  }
+}

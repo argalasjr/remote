@@ -5,9 +5,9 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { HomePage } from './home.page';
-import { MyDeviceComponent } from './my-device/my-device.component'
-import { ConfigureComponent } from './configure/configure.component'
-import { ConfigureModalComponent } from './configure/configure-modal/configure-modal.component'
+import { MyDeviceComponent } from './my-device/my-device.component';
+import { ConfigureComponent } from './configure/configure.component';
+import { ConfigureModalComponent } from './configure/configure-modal/configure-modal.component';
 
 @NgModule({
   imports: [
@@ -28,10 +28,11 @@ import { ConfigureModalComponent } from './configure/configure-modal/configure-m
     ConfigureComponent,
     ConfigureModalComponent
   ],
-  exports:[
+  exports: [
     MyDeviceComponent,
     ConfigureComponent,
     ConfigureModalComponent
   ],
+  providers: [ConfigureComponent]
 })
 export class HomePageModule {}

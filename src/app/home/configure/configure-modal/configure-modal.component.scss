@@ -1,0 +1,12 @@
+.modal-transparency { 
+    --background: transparent; 
+    --height: 80%;
+  
+   ion-toolbar {
+     --background: transparent;
+     color: white;
+   }
+   ion-content {
+     --background: transparent;
+   }
+  }

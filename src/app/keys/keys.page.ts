@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ErrorDialogService } from '../services/error-dialog/error-dialog.service';
 import { IKey, KeysService } from '../services/keys/keys.service';
+import { Chooser } from '@ionic-native/chooser/ngx';
 
 /**
  * Page for managing EVVA keys
@@ -25,11 +25,12 @@ export class KeysPage {
     private keysProvider: KeysService,
     private alertCtrl: AlertController,
     private activatedRoute: ActivatedRoute,
-    private fileChooser: FileChooser,
     private filePath: FilePath,
     private file: File,
     private tr: TranslateService,
-    private helpers: ErrorDialogService
+    private helpers: ErrorDialogService,
+    private chooser: Chooser,
+    private platform: Platform
   ) {
 
   }
@@ -49,22 +50,31 @@ export class KeysPage {
   }
 
   async import() {
+    await this.platform.ready().then(async () => {
+
     let name: string;
     let content: string;
-    let url: string;
-
+    let chooserResult: any;
+    let nativeUrl: string;
     try {
-      url = await this.fileChooser.open();
+      chooserResult = await this.chooser.getFile();
     } catch (e) {
       console.log(e);
       return;
     }
 
+    if (chooserResult) {
     try {
-      const nativeUrl = await this.filePath.resolveNativePath(url);
+      if (this.platform.is('android')) {
+      nativeUrl = await this.filePath.resolveNativePath(chooserResult.uri);
+      } else {
+        nativeUrl = chooserResult.uri;
+      }
       const separatorIndex = nativeUrl.lastIndexOf('/');
       const path = nativeUrl.substring(0, separatorIndex);
+      console.log(path);
       const file = nativeUrl.substring(separatorIndex + 1);
+      console.log(file);
       const suffixIndex = file.lastIndexOf('.');
       const suffix = file.substring(suffixIndex);
       if (suffix !== '.txt') {
@@ -76,19 +86,23 @@ export class KeysPage {
       this.helpers.showError(error);
       return;
     }
-
-    this.addKey(name, content);
+    if (name && content) {
+      this.addKey(name, content);
+    }
+  }
+  });
   }
 
   async addKey(name = '', value = '') {
     const newKeyAlert = await this.alertCtrl.create({
+      backdropDismiss: false,
       header: this.tr.instant('keys.add-new-key'),
       inputs: [{
         value: name,
         name: 'name',
         placeholder: this.tr.instant('keys.key-name')
       }, {
-        value: value,
+        value,
         name: 'value',
         placeholder: this.tr.instant('keys.key-content')
       }],
@@ -101,6 +115,7 @@ export class KeysPage {
           key.value = key.value.trim();
           if (!key.name || !key.value) {
             this.alertCtrl.create({
+              backdropDismiss: false,
               message: this.tr.instant('keys.enter-key-and-content'),
               buttons: [this.tr.instant('common.ok')]
             }).then(alert => alert.present());
@@ -116,6 +131,7 @@ export class KeysPage {
 
   deleteKey(key: IKey) {
     this.alertCtrl.create({
+      backdropDismiss: false,
       message: this.tr.instant('keys.delete-key-question'),
       buttons: [{
         text: this.tr.instant('common.no')
