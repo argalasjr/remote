@@ -26,14 +26,26 @@ def ionicAddAndroid():
 
 def ionicBuildAndroid():
     cmd.prepareEnvironment()
-    cmd.run('ionic cordova build android --prod')
+    cmd.run('ionic cordova build android --prod --release')
+    # optimize apk
+    cmd.run('zipalign -v 4 app-release-unsigned.apk app-release.apk', 'platforms/android/app/build/outputs/apk/release')
+    # sign the application
+    cmd.run('apksigner sign --ks release-key.keystore --ks-pass file:keypwd -v ../platforms/android/app/build/outputs/apk/release/app-release.apk', 'android-release-sign')
+
+    # build android app bundle
+    cmd.run('./gradlew bundle', 'platforms/android')
+    # sign the AAB release file
+    cmd.run('jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release-key.keystore\
+        -storepass rd7542TBS -keypass rd7542TBS ../platforms/android/app/build/outputs/bundle/release/app-release.aab TBS', 'android-release-sign')
 
 def deploy():
     version = cmd.getVersion()
     package = f'tbs-remote-{version}.apk'
-    buildDir = 'platforms/android/app/build/outputs/apk/debug'
+    buildDir = 'platforms/android/app/build/outputs/apk/release'
     deployDir = 'private/_beta/mobile/Android'
-    cmd.publishPackage(f'{buildDir}/app-debug.apk', f'{deployDir}/{package}')
+    cmd.publishPackage(f'{buildDir}/app-release.apk', f'{deployDir}/{package}')
+    bundleDir = 'platforms/android/app/build/outputs/bundle/release'
+    cmd.publishPackage(f'{bundleDir}/app-release.aab', f'{deployDir}/bundles/tbs-remote-{version}.aab')
 
 def cleanUp():
     cmd.run('git diff')

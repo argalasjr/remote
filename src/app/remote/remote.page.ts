@@ -60,6 +60,7 @@ export class RemotePage implements OnInit {
 
 
     if (subscribe && this.deviceIp) {
+      this.screenOrientation.unlock()
       this.subscribe();
     }
 
@@ -88,7 +89,6 @@ export class RemotePage implements OnInit {
       exhaustMap(i => this.screen.GetFrame(this.deviceIp, i === 0 ? 1 : 0)),
       timeout(5000)
     ).subscribe(async (data) => {
-      this.screenOrientation.unlock()
       this.setState({ idle: false, connecting: false, connectionError: false });
       if (data.keyboard && !this.input) {
         console.log(data.keyboard);
@@ -155,10 +155,10 @@ export class RemotePage implements OnInit {
 
   }
 
-  unsubscribe() {
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  unsubscribe() {    
     if (this.subscription) {
       this.subscription.unsubscribe();
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.NavigateToRootPage();
     }
 

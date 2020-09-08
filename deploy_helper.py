@@ -4,7 +4,8 @@
 import os
 import subprocess
 from pathlib import Path
-from webdav3.client import Client 
+from webdav3.client import Client
+import socket
 
 def run(command, cwd='.', checkErrors=True):
     cmdCall = subprocess.run(command, shell=True, cwd=cwd)
@@ -25,8 +26,12 @@ def getChangelog():
     return getOutput('git log --format=%b -n 1 HEAD')
 
 def prepareEnvironment():
-    os.environ['ANDROID_SDK_ROOT'] = '/opt/android-sdk-linux'
-    os.environ['PATH'] += os.pathsep + '/opt/gradle/gradle-6.5/bin'
+    hostname = socket.gethostname()
+    if hostname.startswith('kulik'):
+        os.environ['ANDROID_SDK_ROOT'] = '/opt/android-sdk-linux'
+        # apksigner, zipalign
+        os.environ['PATH'] += os.pathsep + '/opt/android-sdk-linux/build-tools/29.0.3'
+        os.environ['PATH'] += os.pathsep + '/opt/gradle/gradle-6.5/bin'
 
 def publishPackage(localPath, remotePath):
     # ownCloudWebDav file should be in buildbot worker directory

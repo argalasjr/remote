@@ -1,3 +1,8 @@
-jarsigner -keystore release-key.keystore ../platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk TBS
+with jarsigner (example for android app bundle):
+    jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release-key.keystore -storepass rd7542TBS -keypass rd7542TBS ../platforms/android/app/build/outputs/bundle/release/app-release.aab TBS
+    zipalign -v 4 ../platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk app-release.apk
 
-zipalign -v 4 ../platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk app-release.apk
+with apksigner:
+    zipalign -v 4 ../platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ../platforms/android/app/build/outputs/apk/release/app-release.apk
+    apksigner sign --ks release-key.keystore --ks-pass file:keypwd -v ../platforms/android/app/build/outputs/apk/release/app-release.apk
+    apksigner verify ../platforms/android/app/build/outputs/apk/release/app-release.apk

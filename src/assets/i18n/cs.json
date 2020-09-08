@@ -5,6 +5,7 @@
     "error" : "Chyba",
     "no" : "Ne",
     "ok" : "OK",
+    "proceed" : "Pokračovat",
     "success" : "Úspěch",
     "yes" : "Ano"
   },
@@ -17,12 +18,20 @@
       "refresh" : "Aktualizovat",
       "scanning" : "Hledání okolních TBS zařízení"
     },
+    "disconnected" : "Bluetooth je vypnuté",
+    "fetch" : "Načítám informace o zařízení",
     "help-card" : {
       "text1" : "Prosím, vyberte zařízení ze seznamu níže. Ujistěte se, že máte Bluetooth zapnutý a že jste v blízkosti TBS zařízení.",
       "text2" : "Pokud není zařízení rozpoznáno, můžete opakovat hledání tlačítkem \"Aktualizovat\".",
       "title" : "Připojení k zařízení"
     },
     "navigate-button" : "Nakonfigurovat",
+    "network-header" : "Nastavení sítě",
+    "network-unreachable" : "Síť zařízení není dostupná. Přejete si vytvořit nové spojení?",
+    "proceed-header" : "Úspěch",
+    "proceed-text" : "Zařízení úspěšně připojeno do vaší sítě. Pojmenujte jej prosím.",
+    "set-network" : "Připojuji se k síti",
+    "testing" : "Zařízení je již připojeno k síti. Testuji připojení. ",
     "toolbar-title" : "Připojit"
   },
   "configure-modal" : {
@@ -45,19 +54,33 @@
   },
   "home" : {
     "about" : "O této aplikaci",
+    "bluetooth" : "Bluetooth",
+    "my-devices" : "Má zařízení",
+    "network" : "Síť",
+    "new-connection" : "Přidat nové zařízení",
+    "new-connection-header" : "Nové připojení",
+    "new-connection-text" : "Prosím, vyberte typ připojení chcete navázat",
+    "new-connection-text-ble" : "Pokud neznáte IP adresu vašeho zařízení, použijte tuto možnost.",
+    "new-connection-text-ble-note" : "POZOR: Bluetooth je na zařízení aktivní pouze v režimech \"admin\" a \"startup wizard\"!",
+    "new-connection-text-network" : "Pokud znáte IP adresu vašeho zařízení, vyberte tuto možnost. Aplikace se připojí přímo ke vzdálené obrazovce.",
+    "remote-connection" : "Vzdálené připojení",
+    "title" : "Má zařízení",
     "version" : "Verze"
   },
   "keys" : {
     "add-new-key" : "Přidat nový klíč",
     "available-keys" : "Klíče k dispozici",
     "delete-key-question" : "Opravdu chcete odstranit vybraný klíč?",
+    "empty-key-header" : "Prázdný seznam klíčů",
+    "empty-list-text" : "Nemáte definovaný klíč pro odemknutí. Přidejte jej prosím.",
     "enter-key" : "Zadat klíč ručně",
     "enter-key-and-content" : "Prosím, zadejte název klíče a obsah",
     "import-key" : "Importovat ze souboru",
     "key-content" : "Klíč",
     "key-delete" : "Odstranit",
     "key-name" : "Jméno",
-    "no-key" : "Nemáte žádné klíče"
+    "no-key" : "Nemáte žádné klíče",
+    "title" : "Mé klíče"
   },
   "locks" : {
     "battery-percent" : "Baterie je na {{batteryLevel}}%",
@@ -71,7 +94,23 @@
     "scanning" : "Hledám zámky v okolí...",
     "select-key" : "Zvolte klíč",
     "select-lock" : "Vyberte zámek, který chcete otevřít",
-    "start-scan" : "Vyhledat"
+    "start-scan" : "Vyhledat",
+    "title" : "Mé zámky"
+  },
+  "my-device" : {
+    "client-name-header" : "Změnit jméno",
+    "client-name-placeholder" : "Název zařízení",
+    "client-name-text" : "Chcete změnit název zařízení?",
+    "client-name-text-set" : "Prosím, zadejte název zařízení",
+    "delete-header" : "Odebrat zařízení",
+    "delete-text" : "Chcete pokračovat?",
+    "label-ip" : "Změnit IP zařízení",
+    "label-name" : "Změna názvu zařízení",
+    "save-header" : "Uložit připojení",
+    "save-text" : "Přejete si uložit toto připojení?",
+    "settings-header" : "Nastavení",
+    "settings-text1" : "Vyberte možnost pro zařízení:",
+    "settings-text2" : " s IP adresou:"
   },
   "remote" : {
     "connecting" : "Připojení...",
@@ -81,6 +120,7 @@
     "detected-devices" : "Zjištěné zařízení",
     "device-has-no-ip" : "Přístroj není připojen k žádné síti",
     "enter-device-ip" : "Prosím, zadejte adresu IP adresu zařízení",
+    "error" : "Zařízení je nedostupné",
     "ip" : "IP",
     "navigate-button" : "Přejít na vzdálenou obrazovku",
     "obtaining-device-info" : "Získávám informace o zařízení",

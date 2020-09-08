@@ -5,6 +5,7 @@
     "error" : "Error",
     "no" : "No",
     "ok" : "OK",
+    "proceed" : "Continuar",
     "success" : "Exito",
     "yes" : "Si"
   },
@@ -17,12 +18,20 @@
       "refresh" : "Refrescar",
       "scanning" : "Escaneo de dispositivos TBS cercanos"
     },
+    "disconnected" : "Bluetooth esta deshabilitado",
+    "fetch" : "Obteniendo información del dispositivo",
     "help-card" : {
       "text1" : "Seleccione el dispositivo de la lista a continuación. Asegúrese de tener Bluetooth activado y de que esté cerca del dispositivo TBS.",
       "text2" : "Si no se detecta ningún dispositivo, puede repetir el descubrimiento con el botón \"Actualizar\"",
       "title" : "Conectar a el dispositivo"
     },
     "navigate-button" : "Configurar",
+    "network-header" : "Configuración de la red",
+    "network-unreachable" : "La red del dispositivo es inalcanzable. ¿Quieres establecer una nueva conexión?",
+    "proceed-header" : "EXITO",
+    "proceed-text" : "Dispositivo conectado con éxito a su red. Por favor, dale un nombre útil ahora.",
+    "set-network" : "Conectándose a la red",
+    "testing" : "El dispositivo ya está conectado a una red. Prueba de conectividad",
     "toolbar-title" : "Conectar"
   },
   "configure-modal" : {
@@ -45,7 +54,15 @@
   },
   "home" : {
     "about" : "Acerca de la aplicacion",
+    "bluetooth" : "Bluetooth",
     "my-devices" : "Mis dipositivos",
+    "network" : "Red",
+    "new-connection" : "Agregar un nuevo dispositivo",
+    "new-connection-header" : "Nueva Conexi´´on",
+    "new-connection-text" : "Elija el tipo de conexión que desea establecer.",
+    "new-connection-text-ble" : "Si no se conoce la dirección IP de su dispositivo, utilice esta opción.",
+    "new-connection-text-ble-note" : "NOTA: ¡Bluetooth en el dispositivo solo está activo en el asistente de inicio o en el modo Administrador!",
+    "new-connection-text-network" : "Si se conoce la dirección IP de su dispositivo, elija esta opción. Se conecta directamente a la pantalla remota.",
     "remote-connection" : "Conexion remota",
     "title" : "Bienvenido a TBS Remote",
     "version" : "Version"
@@ -54,13 +71,16 @@
     "add-new-key" : "Add nueva clave",
     "available-keys" : "Claves dsiponibles",
     "delete-key-question" : "¿Realmente quieres eliminar la clave seleccionada?",
+    "empty-key-header" : "Lista de clave vacia",
+    "empty-list-text" : "No tiene una clave de desbloqueo definida. Por favor añadir.",
     "enter-key" : "Ingrese la clave manualmente",
     "enter-key-and-content" : "Por favor, introduzca el nombre de la clave y el contenido",
     "import-key" : "Importar de archivo",
     "key-content" : "Contenido de la clave",
     "key-delete" : "Borrar",
     "key-name" : "Nombre",
-    "no-key" : "Ninguna clave agregada"
+    "no-key" : "Ninguna clave agregada",
+    "title" : "Mis Claves"
   },
   "locks" : {
     "battery-percent" : "La batería está encendida {{nivel de bateria}}%",
@@ -74,19 +94,23 @@
     "scanning" : "Buscando cerraduras cercanas ...",
     "select-key" : "Seleccione clave",
     "select-lock" : "Seleccione el candado que desea abrir",
-    "start-scan" : "Comerzar escaneo"
+    "start-scan" : "Comerzar escaneo",
+    "title" : "Mis cerraduras"
   },
   "my-device" : {
     "client-name-header" : "Cambio de nombre",
     "client-name-placeholder" : "nombre del dispositivo",
     "client-name-text" : "¿Quieres cambiar el nombre de tu dispositivo?",
+    "client-name-text-set" : "Configura un nombre para tu dispositivo",
     "delete-header" : "Remover dispositivo",
     "delete-text" : "¿Usted queire continuar?",
     "label-ip" : "Cambie el IP del dispositivo",
     "label-name" : "Cambien el nombre del dispositivo",
     "save-header" : "Guardar conexion",
     "save-text" : "¿Quieres guardar esta conexión?",
-    "settings-header" : "Parámetros"
+    "settings-header" : "Parámetros",
+    "settings-text1" : "Por favor, elija la opción para el dispositivo:",
+    "settings-text2" : "con dirección de IP"
   },
   "remote" : {
     "connecting" : "Conectando",
@@ -96,6 +120,7 @@
     "detected-devices" : "Dispositivos borrados",
     "device-has-no-ip" : "El dispositivo no está conectado a ninguna red.",
     "enter-device-ip" : "Por favor ingrese direccion IP del dispositivo",
+    "error" : "Dispositivo no accesible",
     "ip" : "IP",
     "navigate-button" : "Ir a la pantalla remota",
     "obtaining-device-info" : "Obteniendo infromacion del dispositivo",
